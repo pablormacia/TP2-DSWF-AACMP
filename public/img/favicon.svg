@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="AACMP">
+  <title>AACMP — Frontend Gems</title>
+  <!-- El cristal del hero simplificado, sin fondo: cinco facetas (una por integrante)
+       en color plano. Mezcla facetas claras y oscuras para leerse en pestañas claras y oscuras. -->
+  <polygon points="16,1.5 25,11 22,24 16,30.5 10,24 7,11" fill="#6f59df"/><!-- base: evita líneas entre facetas -->
+  <polygon points="16,1.5 7,11 16,9.5"          fill="#a996ff"/><!-- Pablo    -->
+  <polygon points="16,1.5 25,11 16,9.5"         fill="#7fd8f0"/><!-- Juan     -->
+  <polygon points="7,11 10,24 16,9.5"           fill="#5b3fd0"/><!-- Daniela  -->
+  <polygon points="25,11 22,24 16,9.5"          fill="#2f7fd2"/><!-- Mariano  -->
+  <polygon points="10,24 16,30.5 22,24 16,9.5"  fill="#7a5ee8"/><!-- Fernando -->
+</svg>

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 260" preserveAspectRatio="xMidYMax slice">
+  <defs>
+    <linearGradient id="distance" x2="0" y2="1"><stop stop-color="#344466" stop-opacity=".65"/><stop offset="1" stop-color="#172139" stop-opacity=".1"/></linearGradient>
+    <linearGradient id="rock" x2=".6" y2="1"><stop stop-color="#263b56"/><stop offset=".45" stop-color="#101f34"/><stop offset="1" stop-color="#090f1e"/></linearGradient>
+    <linearGradient id="edge" x2="1" y2=".8"><stop stop-color="#70b8d1" stop-opacity=".48"/><stop offset=".45" stop-color="#596a9c" stop-opacity=".18"/><stop offset="1" stop-color="#171f36" stop-opacity="0"/></linearGradient>
+    <radialGradient id="mist"><stop stop-color="#7aa7d8" stop-opacity=".29"/><stop offset=".5" stop-color="#697db9" stop-opacity=".12"/><stop offset="1" stop-color="#273757" stop-opacity="0"/></radialGradient>
+    <radialGradient id="pool"><stop stop-color="#8ed5df" stop-opacity=".3"/><stop offset=".35" stop-color="#687aba" stop-opacity=".16"/><stop offset="1" stop-color="#16223a" stop-opacity="0"/></radialGradient>
+    <linearGradient id="fade" x2="0" y2="1"><stop stop-color="white"/><stop offset=".8" stop-color="white"/><stop offset="1" stop-color="black"/></linearGradient>
+    <mask id="soft-foot"><rect width="1200" height="260" fill="url(#fade)"/></mask>
+  </defs>
+  <g mask="url(#soft-foot)">
+    <!-- Relieve distante irregular y valle abierto alrededor del cristal. -->
+    <path d="M0 144 24 139 43 105 51 112 68 70 79 80 87 64 100 104 115 120 129 112 154 147 170 142 193 167 227 175Q268 159 304 169L329 152 341 155 362 125 373 133 389 120 412 156Q472 179 535 170T638 183Q694 174 738 166L771 151 792 157 811 137 825 143 849 109 858 119 873 83 886 97 907 61 919 83 929 80 948 120 961 111 987 145 1004 133 1027 99 1040 108 1056 57 1068 75 1085 34 1095 66 1106 60 1129 105 1150 98 1172 129 1200 118V260H0Z" fill="url(#distance)"/>
+    <ellipse cx="635" cy="178" rx="490" ry="67" fill="url(#mist)"/>
+    <!-- Rocas intermedias: fracturas cortas, flancos erosionados. -->
+    <path d="M0 218 25 201 39 164 51 174 69 119 78 130 88 101 95 130 110 145 121 185 137 177 150 198 170 181 178 150 188 160 204 125 211 154 222 148 239 187 253 184 276 210Q339 216 400 202T510 213Q627 221 707 204L749 211 785 196 811 202 841 181 854 151 866 161 883 124 894 149 907 143 927 184 949 179 965 151 981 157 995 118 1006 135 1018 88 1027 101 1040 67 1053 97 1060 92 1076 148 1091 140 1105 172 1122 163 1142 197 1170 174 1200 185V260H0Z" fill="url(#rock)"/>
+    <g fill="url(#edge)">
+      <path d="M88 101 84 151 70 175 63 210 98 185 110 145 95 130Z M204 125 191 175 181 191 175 213 213 187 211 154Z"/>
+      <path d="M883 124 870 180 856 196 891 179 898 162 894 149Z M1040 67 1027 127 1012 158 994 195 1032 170 1046 120 1053 97Z M1091 140 1080 177 1070 194 1105 172Z"/>
+    </g>
+    <g fill="none" stroke="#8bb5ce" stroke-opacity=".18" stroke-width=".8">
+      <path d="m88 103-4 36-10 18-4 18m134-47-8 34-8 17m852-109-9 34-1 19-14 34m-134-30-6 27-9 20"/>
+    </g>
+    <!-- Suelo estriado y bruma baja, sin contornos orbitales ni zigzag. -->
+    <path d="M0 236Q105 207 194 226T357 224Q448 212 520 226T702 222Q792 201 882 220T1044 215Q1133 215 1200 230V260H0Z" fill="#0b1425"/>
+    <ellipse cx="653" cy="222" rx="340" ry="30" fill="url(#pool)"/>
+    <ellipse cx="582" cy="201" rx="398" ry="24" fill="url(#mist)"/>
+    <g fill="none" stroke-linecap="round">
+      <path d="M319 228q74-12 134-5m42 11q92-17 175-8m-21 12q71-10 104-6m57-12 58 3" stroke="#87b9d3" stroke-opacity=".18"/>
+      <path d="m382 242 84-9 33 3m293-24 34-5 32 2m-603 20 24-4 35 3" stroke="#9b8cd4" stroke-opacity=".16"/>
+    </g>
+    <path d="M0 250 35 239 56 243 80 231 95 239 138 233 169 248 212 243 241 260H0Z M907 260 945 244 968 249 996 231 1023 236 1054 222 1071 235 1103 228 1139 240 1160 225 1200 234V260Z" fill="#080f1c"/>
+    <g fill="#b9dfe7" opacity=".55"><circle cx="394" cy="205" r=".8"/><circle cx="808" cy="193" r="1"/><circle cx="704" cy="217" r=".7"/></g>
+    <g fill="#d4b185" opacity=".5"><circle cx="243" cy="205" r="1"/><circle cx="936" cy="196" r=".9"/></g>
+  </g>
+</svg>

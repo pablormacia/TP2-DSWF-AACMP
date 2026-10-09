@@ -1,0 +1,100 @@
+[
+  {
+    "id": 1,
+    "stage": "TP1",
+    "title": "Primero, los acuerdos",
+    "paragraphs": [
+      "Definimos un canal de comunicación, repartimos responsabilidades iniciales y acordamos trabajar con ramas cortas y revisiones cruzadas.",
+      "Usar una identidad compartida y una estructura común para que todos los perfiles se sientan parte del mismo sistema."
+    ],
+    "label": "Etapa 1 · Organización",
+    "period": "Semana 1",
+    "gem": "coral",
+    "note": "Decisión"
+  },
+  {
+    "id": 2,
+    "stage": "TP1",
+    "title": "Una identidad flexible",
+    "paragraphs": [
+      "Elegimos una base neutra, tipografía geométrica y un color distinto para cada integrante. Cada uno está representado por un personaje ilustrado que cuida su privacidad.",
+      "Equilibrar personalidad y consistencia. Lo resolvimos repitiendo grillas, espaciados y componentes, y variando sólo el acento visual."
+    ],
+    "label": "Etapa 2 · Diseño",
+    "period": "Semana 1",
+    "gem": "cerulean",
+    "note": "Dificultad"
+  },
+  {
+    "id": 3,
+    "stage": "TP1",
+    "title": "Componentes sin framework",
+    "paragraphs": [
+      "Construimos la navegación, tarjetas y perfiles con HTML semántico, CSS compartido y JavaScript nativo.",
+      "Evitar desbordes en tamaños intermedios. Ajustamos la grilla y verificamos específicamente 400 px, 900 px y 1200 px."
+    ],
+    "label": "Etapa 3 · Desarrollo",
+    "period": "Semana 2",
+    "gem": "ochre",
+    "note": "Dificultad"
+  },
+  {
+    "id": 4,
+    "stage": "TP1",
+    "title": "Movimiento con propósito",
+    "paragraphs": [
+      "La portada permite mezclar el orden del equipo y cada perfil ofrece una interacción temática. También sumamos revelado progresivo y menú móvil.",
+      "La interacción mejora la experiencia cuando responde al contenido y conserva accesibilidad, foco y legibilidad."
+    ],
+    "label": "Etapa 4 · Interacción",
+    "period": "Semana 2",
+    "gem": "sage",
+    "note": "Aprendizaje"
+  },
+  {
+    "id": 5,
+    "stage": "TP1",
+    "title": "Ajustes finales antes de entregar",
+    "paragraphs": [
+      "En esta etapa hicimos una revisión global del proyecto: enlaces, ortografía, consola, adaptación mobile, datos reales de los perfiles y coherencia visual entre secciones. También optimizamos las imágenes y fuimos corrigiendo detalles de interacción y presentación que aparecieron durante las pruebas.",
+      "Con el sitio ya estable, completamos la documentación visual del README, revisamos la participación en commits, verificamos la publicación en Vercel y dejamos el proyecto preparado para su entrega final. Más que una lista de control, esta etapa funcionó como el cierre de todo el proceso."
+    ],
+    "label": "Etapa 5 · Revisión",
+    "period": "Cierre y entrega",
+    "gem": "lavender",
+    "note": "Lo que terminamos de cerrar"
+  },
+  {
+    "id": 6,
+    "stage": "TP2",
+    "title": "De páginas estáticas a componentes React",
+    "paragraphs": [
+      "Reemplazamos el renderizado de HTML y los scripts globales por componentes reutilizables y estado de React. Conservamos los cinco perfiles, sus contenidos y los avatares del TP1."
+    ],
+    "label": "TP2 · Componentes",
+    "period": "Migración a React",
+    "gem": "coral"
+  },
+  {
+    "id": 7,
+    "stage": "TP2",
+    "title": "Una navegación compartida",
+    "paragraphs": [
+      "Incorporamos un layout con sidebar, rutas internas y un panel móvil. Los enlaces antiguos redirigen a las nuevas rutas para conservar los accesos existentes."
+    ],
+    "label": "TP2 · Navegación",
+    "period": "Migración a React",
+    "gem": "cerulean"
+  },
+  {
+    "id": 8,
+    "stage": "TP2",
+    "title": "Recursos, datos y estados",
+    "paragraphs": [
+      "Sumamos un catálogo JSON con búsqueda y categorías, una consulta pública a GitHub con carga, error y reintento, y un árbol desplegable que refleja los componentes de la aplicación."
+    ],
+    "label": "TP2 · Contenido",
+    "period": "Migración a React",
+    "gem": "sage"
+  }
+]

@@ -1,0 +1,115 @@
+[
+  {
+    "id": "juan",
+    "name": "Juan Manuel Albareda",
+    "role": "Análisis & calidad",
+    "meta": "Buenos Aires, Argentina • 47 años",
+    "bio": "Technical business analyst: contador público que entiende el negocio y además escribe la capa que lo implementa. Trabaja en costos, procesos y auditoría interna en PyMEs y asociaciones civiles, y cursa el anteúltimo cuatrimestre de la Tecnicatura. Conoce el problema de negocio desde adentro: eso es lo que lleva al código.",
+    "github": "https://github.com/juanmanuelalbareda",
+    "skills": ["JavaScript", "PHP/Python", "SQL/MariaDB", "Análisis funcional"],
+    "favorites": [
+      {
+        "title": "Películas Favoritas",
+        "items": ["Forrest Gump", "Big Fish", "The Truman Show"]
+      },
+      {
+        "title": "Discos Favoritos",
+        "items": [
+          "No llores por mí, Argentina",
+          "Get a Grip",
+          "Yo, mi, me, contigo"
+        ]
+      }
+    ],
+    "cardRole": "ANÁLISIS & CALIDAD",
+    "cardSkills": ["JavaScript", "PHP/Python", "SQL/MariaDB", "Funcional"]
+  },
+  {
+    "id": "mariano",
+    "name": "Mariano Arenas",
+    "role": "Código & lógica",
+    "meta": "Buenos Aires, Argentina • 39 años",
+    "bio": "Disfruta entender cómo funcionan las cosas, ordenar sistemas y encontrar soluciones simples a problemas complejos. Combina experiencia técnica, automatización y desarrollo para construir soluciones claras, eficientes y fáciles de mantener.",
+    "github": "https://github.com/NanoCode10",
+    "skills": ["DevOps/Infra", "JavaScript", "C#", "PostgreSQL"],
+    "favorites": [
+      {
+        "title": "Películas Favoritas",
+        "items": ["Matrix", "Avatar", "Shrek II"]
+      },
+      {
+        "title": "Discos Favoritos",
+        "items": ["Californication", "Canción Animal", "Thriller"]
+      }
+    ],
+    "cardRole": "CODIGO & LÓGICA",
+    "cardSkills": ["DevOps/Infra", "JavaScript", "C#", "PostgreSQL"]
+  },
+  {
+    "id": "daniela",
+    "name": "Daniela Cabrera",
+    "role": "Diseño & detalle",
+    "meta": "General Pico, La Pampa • 33 años",
+    "bio": "Convierte problemas complejos en interfaces simples y llenas de intención. Busca la armonía visual y la perfección en cada pixel para lograr que la tecnología se sienta más humana.",
+    "github": "https://github.com/Dancay5071",
+    "skills": ["UX Writing", "HTML", "CSS", "Accesibilidad"],
+    "favorites": [
+      {
+        "title": "Películas Favoritas",
+        "items": ["Pienso en el final", "Memento", "Lluvia de hamburguesas"]
+      },
+      {
+        "title": "Discos Favoritos",
+        "items": ["Innuendo", "Home Free", "Piano Bar"]
+      }
+    ],
+    "cardRole": "DISEÑO & DETALLE",
+    "cardSkills": ["UX Writing", "HTML", "CSS", "Accesibilidad"]
+  },
+  {
+    "id": "pablo",
+    "name": "Pablo Macia",
+    "role": "Estrategia & movimiento",
+    "meta": "Buenos Aires, Argentina • 38 años",
+    "bio": "Une visión técnica y creatividad para que cada entrega avance con propósito. Piensa el diseño como un sistema: cada decisión tiene impacto en el todo y trabaja para que la experiencia final sea coherente y memorable.",
+    "github": "https://github.com/pablormacia",
+    "skills": ["HTML", "Javascript", "Git/GitHub", "UI/UX"],
+    "favorites": [
+      {
+        "title": "Series favoritas",
+        "items": ["The Big Bang Theory", "Breaking Bad", "Dexter"]
+      },
+      {
+        "title": "Libros Favoritos",
+        "items": ["1984", "Un mundo feliz", "Rebelión en la granja"]
+      }
+    ],
+    "cardRole": "ESTRATEGIA & MOVIMIENTO",
+    "cardSkills": ["HTML", "Javascript", "Git/GitHub", "UI/UX"]
+  },
+  {
+    "id": "fernando",
+    "name": "Fernando Palearuzza",
+    "role": "Contenido & empatía",
+    "meta": "Buenos Aires, Argentina • 26 años",
+    "bio": "Conecta ideas y personas a través de historias claras y experiencias accesibles. Apasionado por la usabilidad y la creación de interfaces que realmente resuelvan problemas y mejoren la vida de los usuarios en cada interacción digital.",
+    "github": "https://github.com/FerPalearuzza",
+    "skills": ["Testing", "Web", "Diseño UI", "MySQL"],
+    "favorites": [
+      {
+        "title": "Películas Favoritas",
+        "items": [
+          "Volver al Futuro",
+          "El planeta del Tesoro",
+          "Piratas del Caribe"
+        ]
+      },
+      {
+        "title": "Libros Favoritos",
+        "items": ["Estudio en Escarlata", "All Tomorrows", "La isla misteriosa"]
+      }
+    ],
+    "cardRole": "CONTENIDO & EMPATÍA",
+    "cardSkills": ["Testing", "Web", "Diseño UI", "MySQL"]
+  }
+]

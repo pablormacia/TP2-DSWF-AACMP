@@ -1,0 +1,140 @@
+/* ============================================================
+   hechizo.css — la revelación del avatar en las páginas de perfil.
+   Archivo aparte de los estilos compartidos: cada integrante puede
+   editar su HTML sin que nadie toque guild.css ni styles.css.
+   Lo cargan las cinco páginas de perfil.
+   ============================================================ */
+
+/* --- Contenedor de la foto: base para el destello --- */
+#profile-img {
+  position: relative;
+  overflow: hidden;
+  /* El marco manda: mantiene su cuadrado pase lo que pase con la imagen.
+     Sin esto el recuadro se reacomoda al revelar, porque el avatar y la
+     foto real no tienen las mismas dimensiones. */
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+#profile-img img {
+  /* La imagen llena el marco entero y se recorta si hace falta, así
+     cualquier avatar, foto o SVG se ve exactamente del mismo tamaño. */
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .45s ease, filter .45s ease;
+}
+
+/* El resplandor que barre la imagen durante la transformación. */
+#profile-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background:
+    radial-gradient(circle at 50% 50%, rgb(255 255 255 / 85%), transparent 55%),
+    conic-gradient(from 0deg, transparent, var(--accent), transparent 35%);
+}
+
+#profile-img.is-conjuring img  { animation: conjuro .9s ease-in-out; }
+#profile-img.is-conjuring::after { animation: destello .9s ease-out; }
+
+@keyframes conjuro {
+  0%   { transform: scale(1)    rotate(0deg);  filter: blur(0)   brightness(1); }
+  45%  { transform: scale(1.06) rotate(-4deg); filter: blur(6px) brightness(1.6); }
+  55%  { transform: scale(1.06) rotate(4deg);  filter: blur(6px) brightness(1.6); }
+  100% { transform: scale(1)    rotate(0deg);  filter: blur(0)   brightness(1); }
+}
+
+@keyframes destello {
+  0%   { opacity: 0;   transform: rotate(0deg)   scale(.6); }
+  50%  { opacity: .95; transform: rotate(180deg) scale(1.1); }
+  100% { opacity: 0;   transform: rotate(360deg) scale(1.4); }
+}
+
+/* Botón y foto comparten columna: así el botón queda centrado sobre la
+   imagen en cualquier ancho, y no alineado al borde del contenedor. */
+.profile-media {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* --- El botón que dispara el hechizo --- */
+.reveal-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  padding: 12px 22px;
+  min-height: 44px;              /* área táctil cómoda en celular */
+  max-width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface-soft);
+  color: var(--text);
+  font-family: var(--font-label);
+  font-size: .9rem;
+  font-weight: 600;
+  line-height: 1.2;
+  cursor: pointer;
+}
+
+.reveal-button:hover,
+.reveal-button:focus-visible {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+
+.reveal-button:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.reveal-button .reveal-icon {
+  font-size: 1.1rem;
+  transition: transform .45s ease;
+}
+
+.reveal-button[aria-pressed="true"] .reveal-icon {
+  transform: rotate(180deg) scale(1.15);
+}
+
+/* La parte larga del texto sólo aparece cuando hay lugar (ver 900 px). */
+.reveal-button .reveal-largo { display: none; }
+
+/* ============================================================
+   Puntos de corte obligatorios del TP: 400, 900 y 1200 px.
+   ============================================================ */
+
+/* 1200: pantallas grandes, el botón puede respirar. */
+@media (min-width: 1200px) {
+  .reveal-button { padding: 14px 26px; font-size: .95rem; }
+}
+
+/* 900: hay ancho suficiente para la frase completa. */
+@media (min-width: 900px) {
+  .reveal-button .reveal-largo { display: inline; }
+}
+
+/* 400: celular angosto. El botón ocupa el ancho de la columna
+   para que el área táctil sea grande y el texto no se parta. */
+@media (max-width: 400px) {
+  .reveal-button {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: .82rem;
+    gap: 8px;
+  }
+  #profile-img.is-conjuring img { animation-duration: .7s; }
+}
+
+/* --- Quien pidió menos movimiento recibe el cambio sin animación --- */
+@media (prefers-reduced-motion: reduce) {
+  #profile-img.is-conjuring img,
+  #profile-img.is-conjuring::after { animation: none; }
+  .reveal-button .reveal-icon { transition: none; }
+}

@@ -1,0 +1,2048 @@
+/* Fase 2: temas y componentes compartidos sobre la composición de Daniela. */
+:root {
+  color-scheme: light;
+  --bg: #f7f8fc;
+  --surface: #ffffff;
+  --surface-soft: #eef1f8;
+  --text: #17233b;
+  --text-muted: #526078;
+  --accent: #6542d9;
+  --tech: #087c91;
+  --accent-soft: #eeebfc;
+  --border: #d4dbea;
+  --focus: #6542d9;
+  --button-bg: linear-gradient(135deg, #7552f0, #5a3fd0);
+  --button-text: #ffffff;
+  --shadow: 0 8px 28px rgb(28 40 75 / 7%);
+  --glow: rgb(101 66 217 / 12%);
+  --wash: rgb(8 124 145 / 5%);
+  --member-juan: #2463a6;
+  --member-mariano: #28734a;
+  --member-daniela: #886312;
+  --member-pablo: #ab5232;
+  --member-fernando: #7750b2;
+
+  /* Compatibilidad con los componentes existentes. */
+  --paper: var(--bg);
+  --paper-warm: var(--surface);
+  --paper-tinted: var(--surface-soft);
+  --ink: var(--text);
+  --ink-mid: var(--text);
+  --ink-light: var(--text-muted);
+  --ink-faint: var(--text-muted);
+  --sage: var(--accent);
+  --sage-light: var(--accent-soft);
+  --sage-pale: var(--surface-soft);
+  --moss: var(--tech);
+  --moss-dark: var(--tech);
+  --ochre: var(--text-muted);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0d1420;
+  --surface: #172233;
+  --surface-soft: #202d43;
+  --text: #f3f6fc;
+  --text-muted: #b5c1d3;
+  --accent: #b49aff;
+  --tech: #63dcec;
+  --accent-soft: #302b4d;
+  --border: #3c4d66;
+  --focus: #63dcec;
+  --button-bg: linear-gradient(135deg, #7f5cff, #5b45e6);
+  --button-text: #ffffff;
+  --shadow: 0 8px 28px rgb(0 0 0 / 18%);
+  --glow: rgb(180 154 255 / 13%);
+  --wash: rgb(99 220 236 / 5%);
+  --member-juan: #85baff;
+  --member-mariano: #82d5a8;
+  --member-daniela: #e7c66d;
+  --member-pablo: #f1ab8e;
+  --member-fernando: #c6a3f4;
+}
+
+body {
+  font-size: 1rem;
+  background: var(--bg);
+  color: var(--text);
+}
+
+body, .site-header, .main-nav, .site-footer, .scroll-body,
+.manifesto-content, .cta-inner, .member-card, .profile-favorites,
+.vine-card, .stat-leaf, a, button, .tags span, .profile-skills span {
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease,
+    box-shadow .2s ease, transform .2s ease;
+}
+
+/* Sin confeti global. La gema conserva sus facetas, polvo y destellos. */
+.leaf-container, .card-petals, .magic-cascade, .golden-spore,
+.orb-vortex, .vine-firefly, .stone-moss, .stone-crack,
+.team-section::before, .team-section::after {
+  display: none;
+}
+.leaf, .petal, .vortex-leaf, .magic-cascade, .golden-spore,
+.vine-firefly, .stone-moss { animation: none; }
+.paper-texture::after { opacity: .2; }
+body::before {
+  background: radial-gradient(ellipse at 15% 10%, var(--wash), transparent 60%);
+  animation: none;
+}
+.hero::after { display: none; }
+.team-section { background: var(--wash); }
+
+/* La tipografía deja de cargar con la ornamentación. */
+.brand, .site-footer .brand, h1.hero-title, .hero-title-em, .hero-lead,
+.manifesto-content h2, .manifesto-content h2 em, .manifesto-content p,
+.card-body h3, .card-index, .stat-leaf strong, .cta-text h2, .cta-text em,
+.profile-header h1, .profile-bio, .fav-list h2, .fav-list li, .skills-hint,
+.log-hero h1, .log-hero p, .vine-card h2, .vine-card p, .vine-node-label,
+.stone-letters { font-style: normal; }
+h1.hero-title, .manifesto-content h2, .cta-text h2, .log-hero h1 { font-weight: 600; }
+.hero-title-em {
+  background: none;
+  -webkit-text-fill-color: currentColor;
+  color: var(--accent);
+  filter: none;
+}
+.hero-lead { opacity: 1; }
+.drop-cap-p::first-letter {
+  float: none;
+  font: inherit;
+  padding: 0;
+  color: inherit;
+}
+.brush-reveal { clip-path: none; animation: none; }
+.profile-header h1 { font-size: clamp(2rem, 4vw, 3rem); overflow-wrap: anywhere; }
+.hero-scroll .eyebrow, .eyebrow, .label-tag, .role-header, .card-index,
+.stat-leaf span, .tags span, .skills-hint, .cta-text p,
+.vine-card .log-meta, .vine-card h3, .site-footer {
+  font-size: .8rem;
+  letter-spacing: .04em;
+}
+.card-link, .text-button, .main-nav, .btn-leaf, .btn-stone, .button,
+.btn-github { font-size: .875rem; letter-spacing: .02em; }
+.card-body h3 { font-size: 1.1rem; }
+.section-heading h2 { font-style: normal; font-weight: 600; }
+.vine-card p, .manifesto-content p { font-size: 1rem; }
+.hero-scroll .eyebrow { opacity: 1; }
+
+/* Header: mismo recorrido de navegación, con el tema siempre visible. */
+.site-header {
+  gap: 20px;
+  background: var(--surface);
+  border-color: var(--border);
+}
+.site-header .brand { margin-right: auto; flex-shrink: 0; }
+.brand { letter-spacing: 0; }
+.brand-mark {
+  background: var(--accent-soft);
+  color: var(--accent);
+  box-shadow: none;
+  border-radius: 10px;
+  font-style: normal;
+}
+.brand-name { display: grid; line-height: 1.15; font-size: 1.15rem; }
+.brand-name small {
+  font-family: var(--font-body);
+  color: var(--text-muted);
+  font-size: .75rem;
+  font-weight: 500;
+  margin-top: 4px;
+}
+.main-nav { gap: 24px; }
+.main-nav a { color: var(--text-muted); }
+.main-nav a:hover, .main-nav a.active { color: var(--accent); }
+/* Switch segmentado: dos celdas de 34 px y una pastilla del mismo tamaño.
+   Ícono y pastilla comparten la misma grilla, así quedan siempre centrados. */
+.theme-toggle {
+  --cell: 34px;
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--cell) var(--cell);
+  grid-template-rows: var(--cell);
+  align-items: center;
+  justify-items: center;
+  padding: 3px;
+  margin-left: 8px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface-soft);
+  color: var(--text-muted);
+  box-shadow: inset 0 1px 2px rgb(20 30 60 / 8%);
+  flex-shrink: 0;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.theme-toggle[hidden] { display: none; }
+.theme-toggle:focus-visible { border-radius: 999px; outline-offset: 3px; }
+.theme-toggle svg {
+  position: relative;
+  z-index: 1;
+  width: 18px;
+  height: 18px;
+  grid-row: 1;
+  transition: color .25s ease;
+}
+.theme-sun { grid-column: 1; color: #b4690a; }
+.theme-moon { grid-column: 2; }
+.theme-thumb {
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  width: var(--cell);
+  height: var(--cell);
+  border-radius: 50%;
+  background: linear-gradient(180deg, #ffffff, #fff3d6);
+  box-shadow: 0 0 0 1px rgb(226 160 50 / 30%), 0 3px 10px rgb(226 160 50 / 28%);
+  transition: transform .28s cubic-bezier(.3, .7, .4, 1), background .28s ease, box-shadow .28s ease;
+}
+.theme-toggle:hover { border-color: color-mix(in srgb, var(--accent) 45%, var(--border)); }
+.theme-toggle:active .theme-thumb { box-shadow: 0 0 0 4px var(--glow); }
+.theme-toggle[aria-pressed="true"] .theme-thumb {
+  transform: translateX(var(--cell));
+  background: linear-gradient(135deg, #8a6cff, #5b45e6);
+  box-shadow: 0 0 0 1px rgb(255 255 255 / 12%), 0 3px 14px rgb(127 92 255 / 50%);
+}
+.theme-toggle[aria-pressed="true"] .theme-sun { color: var(--text-muted); }
+.theme-toggle[aria-pressed="true"] .theme-moon { color: #ffffff; }
+:root[data-theme="dark"] .theme-toggle { box-shadow: inset 0 1px 2px rgb(0 0 0 / 30%); }
+:where(a, button):focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+#equipo { scroll-margin-top: 100px; }
+
+/* Superficies existentes: sin fondos de pergamino incompatibles con Dark. */
+.scroll-body, .manifesto-content, .cta-inner, .vine-card,
+.profile-favorites, .stat-leaf, .stat-leaf:nth-child(2), .stat-leaf:nth-child(3) {
+  background: var(--surface);
+  border-color: var(--border);
+  box-shadow: var(--shadow);
+  border-radius: 20px;
+}
+.scroll-body::before, .scroll-body::after, .vine-card::before { display: none; }
+.manifesto-content::before { color: var(--border); }
+.site-footer { background: var(--surface); border-color: var(--border); }
+.stat-leaf:hover, .vine-card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+
+.btn-leaf, .button.primary, .btn-github {
+  background: var(--button-bg);
+  color: var(--button-text);
+  border: 1px solid transparent;
+  border-radius: 12px;
+  box-shadow: none;
+  animation: none;
+}
+.btn-stone, .button.light, .button.ghost {
+  background: var(--surface);
+  color: var(--accent);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: none;
+}
+.btn-leaf:hover, .button.primary:hover, .btn-github:hover {
+  background: var(--button-bg);
+  color: var(--button-text);
+  border-radius: 12px;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px var(--glow);
+}
+.btn-stone:hover, .button.light:hover, .button.ghost:hover {
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-color: var(--accent);
+  border-radius: 12px;
+  transform: translateY(-2px);
+  box-shadow: none;
+}
+
+/* Acentos por persona, independientes de Mezclar tarjetas. */
+[data-member="juan"] { --member-accent: var(--member-juan); }
+[data-member="mariano"] { --member-accent: var(--member-mariano); }
+[data-member="daniela"] { --member-accent: var(--member-daniela); }
+[data-member="pablo"] { --member-accent: var(--member-pablo); }
+[data-member="fernando"] { --member-accent: var(--member-fernando); }
+.member-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  min-width: 0;
+}
+.member-card::before { display: none; }
+.member-card::after { background: var(--member-accent); animation: none; }
+.member-card:hover, .member-card:focus-within {
+  background: var(--surface);
+  border-color: var(--member-accent);
+  box-shadow: var(--shadow);
+  transform: translateY(-3px);
+}
+.card-portrait, .member-card:hover .card-portrait {
+  box-shadow: 0 0 0 3px var(--surface), 0 0 0 5px var(--member-accent);
+  transform: none;
+}
+.card-portrait::before { display: none; }
+.role-header, .profile-role-label { color: var(--member-accent); }
+.tags span, .member-card:hover .tags span, .profile-skills span {
+  background: var(--surface-soft);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.profile-skills span:hover { background: var(--accent-soft); color: var(--text); }
+.card-link { color: var(--member-accent); border-color: var(--border); min-height: 44px; }
+.card-link:hover { color: var(--member-accent); }
+.profile-img-container {
+  border: 2px solid var(--member-accent);
+  box-shadow: var(--shadow);
+  /* Con el tema cambian sólo el marco y su sombra; la imagen no se anima. */
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.fav-list h2 { border-color: var(--border); }
+
+/* Volver al equipo: enlace de salida del perfil, teñido con el acento del integrante.
+   El cierre de la bitácora (.log-cta-button) comparte la misma base. */
+.btn-volver, .log-cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 48px;
+  padding: 6px 22px 6px 6px;
+  border: 1px solid color-mix(in srgb, var(--member-accent) 35%, var(--border));
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  font-family: var(--font-label);
+  font-size: .95rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: var(--shadow);
+}
+.btn-volver-icon, .log-cta-button-icon {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--member-accent) 14%, var(--surface));
+  color: var(--member-accent);
+  transition: transform .2s ease, background-color .2s ease;
+}
+.btn-volver:hover, .log-cta-button:hover {
+  border-color: var(--member-accent);
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--member-accent) 18%, transparent);
+}
+.btn-volver:hover .btn-volver-icon {
+  transform: translateX(-3px);
+  background: color-mix(in srgb, var(--member-accent) 22%, var(--surface));
+}
+.btn-volver:focus-visible, .log-cta-button:focus-visible {
+  outline: 3px solid var(--member-accent);
+  outline-offset: 4px;
+  border-radius: 999px;
+}
+/* Variante de avance: flecha a la derecha, en un círculo lleno para que se lea como acción principal. */
+.log-cta-button { padding: 6px 6px 6px 24px; font-size: 1rem; transition: border-color .2s ease, box-shadow .2s ease; }
+.log-cta-button-icon {
+  width: 38px;
+  height: 38px;
+  background: var(--member-accent);
+  color: var(--surface);
+}
+.log-cta-button:hover .log-cta-button-icon {
+  transform: translateX(3px);
+  background: color-mix(in srgb, var(--member-accent) 86%, var(--text));
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn-volver:hover .btn-volver-icon, .log-cta-button:hover .log-cta-button-icon { transform: none; }
+}
+
+/* Conservamos la gema original y el orbe, con una luz más contenida. */
+.stone-orb {
+  background: radial-gradient(circle at 30% 25%, var(--accent-soft), var(--surface-soft) 65%);
+  border: 1px solid var(--border);
+  box-shadow: 0 0 35px var(--glow), var(--shadow);
+}
+.stone-letters {
+  color: var(--text);
+  -webkit-text-stroke: 0;
+  text-shadow: none;
+  animation: none;
+}
+.orb-aura { opacity: .35; animation: none; }
+.orb-fireflies { opacity: .55; }
+.hero-orb { overflow: clip; }
+.gem-svg { filter: drop-shadow(0 0 12px var(--glow)); }
+.vine-stem { animation: none; }
+.vine-node-label, .vine-entry:nth-child(even) .vine-node-label {
+  background: var(--accent-soft);
+  color: var(--accent);
+  border: 1px solid var(--border);
+  box-shadow: none;
+  animation: none;
+}
+
+@media (max-width: 900px) {
+  .site-header { padding-inline: 20px; gap: 14px; }
+  .main-nav { gap: 16px; }
+}
+@media (max-width: 600px) {
+  .site-header { padding-inline: 14px; gap: 10px; }
+  .menu-button { order: 3; min-width: 44px; min-height: 44px; }
+  .main-nav { background: var(--surface); border-color: var(--border); box-shadow: var(--shadow); }
+  .hero-title { overflow-wrap: anywhere; }
+  .profile-hero > *, .profile-details { min-width: 0; }
+  .vine-card .log-meta { flex-wrap: wrap; gap: 4px 12px; }
+  .hero-stats { flex-wrap: wrap; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .brush-reveal { clip-path: none; }
+  .reveal { opacity: 1; transform: none; filter: none; }
+  .member-card:hover, .member-card:focus-within, .profile-img-container:hover img {
+    transform: none;
+  }
+}
+/* Fase 3 — Portada Frontend Gems. Se conserva la base de temas y la gema. */
+.site-header {
+  height: 72px;
+  padding-inline: max(24px, calc((100% - 1160px) / 2));
+}
+.site-header .brand-mark { background: none; color: var(--tech); font-size: 1.2rem; }
+/* Isotipo </>: corchetes en teal y la barra en violeta, un poco más larga e
+   inclinada que los corchetes para darle ritmo. Los dos colores del proyecto. */
+.brand-iso { display: block; overflow: visible; }
+.brand-iso path { fill: none; stroke-width: 2.3; stroke-linecap: round; stroke-linejoin: round; }
+.brand-iso-code { stroke: currentColor; }
+.brand-iso-slash { stroke: var(--accent); }
+.site-header::before { display: none; }
+.main-nav a { padding-block: 10px; }
+.main-nav a::after { background: var(--accent); bottom: 3px; }
+/* Fondo Light: ramas translúcidas en los márgenes y manchas de color muy suaves.
+   Son capas de background (sin elementos ni animación), así que no generan
+   overflow ni compiten con el contenido. */
+.home-page {
+  background:
+    url("../img/fondo-hojas.svg") left -64px top 150px / 210px auto,
+    url("../img/fondo-hojas.svg") right -70px top 760px / 190px auto,
+    radial-gradient(900px 480px at 78% 0%, var(--glow), transparent 70%),
+    radial-gradient(520px 360px at 4% 42%, rgb(79 176 162 / 9%), transparent 70%),
+    radial-gradient(560px 380px at 98% 78%, rgb(246 186 150 / 12%), transparent 70%),
+    radial-gradient(640px 420px at 30% 100%, rgb(143 184 232 / 10%), transparent 70%),
+    var(--bg);
+  background-repeat: no-repeat;
+}
+/* Fondo Dark: navy profundo, estrellas fijas y luz violeta/cian localizada. */
+:root[data-theme="dark"] .home-page {
+  background:
+    url("../img/fondo-estrellas.svg") center top / max(1440px, 100%) auto,
+    radial-gradient(900px 520px at 78% 4%, rgb(127 92 255 / 16%), transparent 70%),
+    radial-gradient(600px 400px at 0% 40%, rgb(95 224 240 / 6%), transparent 70%),
+    radial-gradient(900px 500px at 50% 100%, rgb(60 70 140 / 18%), transparent 70%),
+    linear-gradient(180deg, #0b1220, #0d1420 40%, #0a101b);
+  background-repeat: no-repeat;
+}
+/* Siluetas de montañas detrás del núcleo (solo Dark), desvanecidas hacia el texto. */
+.home-page .hero::before {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 30%;
+  height: 58%;
+  background: url("../img/fondo-montanas.svg") center bottom / 100% 100% no-repeat;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 35%, #000 85%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 35%, #000 85%, transparent);
+  opacity: 0;
+  pointer-events: none;
+}
+:root[data-theme="dark"] .home-page .hero::before { opacity: .9; }
+/* Las ramas solo aparecen cuando hay margen lateral libre; si no, quedarían detrás del texto. */
+@media (max-width: 1319px) {
+  :root:not([data-theme="dark"]) .home-page {
+    background:
+      radial-gradient(900px 480px at 78% 0%, var(--glow), transparent 70%),
+      radial-gradient(520px 360px at 4% 42%, rgb(79 176 162 / 9%), transparent 70%),
+      radial-gradient(560px 380px at 98% 78%, rgb(246 186 150 / 12%), transparent 70%),
+      radial-gradient(640px 420px at 30% 100%, rgb(143 184 232 / 10%), transparent 70%),
+      var(--bg);
+    background-repeat: no-repeat;
+  }
+}
+@media (max-width: 900px) {
+  .home-page .hero::before {
+    inset: auto 0 0;
+    height: 150px;
+    background-size: auto 100%;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 25%, #000 75%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 25%, #000 75%, transparent);
+  }
+}
+.home-page .section-shell { width: min(1160px, calc(100% - 48px)); }
+.home-page .hero {
+  min-height: 0;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 32px;
+  align-items: center;
+  padding-block: 22px 16px;
+  text-align: left;
+}
+.hero-copy { position: relative; z-index: 1; min-width: 0; }
+.hero-copy .eyebrow {
+  color: var(--tech);
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .19em;
+  margin: 0 0 16px;
+}
+.hero-copy h1 {
+  font-size: clamp(3.4rem, 5vw, 4.5rem);
+  letter-spacing: -.055em;
+  font-weight: 700;
+  line-height: 1.02;
+  color: var(--text);
+}
+.hero-copy h1 > span {
+  display: block;
+  font-size: .65em;
+  font-weight: 500;
+  letter-spacing: -.045em;
+  margin-top: 5px;
+}
+.hero-copy h1 em {
+  font-style: normal;
+  color: var(--accent);
+  background: linear-gradient(90deg, var(--accent), var(--tech));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero-copy .hero-lead {
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 440px;
+  color: var(--text-muted);
+  margin: 18px 0 24px;
+  text-align: left;
+}
+
+/* Botones del Hero: primario con degradado violeta, secundario de contorno. */
+.hero-copy .hero-actions { gap: 12px; justify-content: flex-start; }
+.hero-copy .hero-actions a,
+.home-page .cta .button {
+  height: 48px;
+  padding: 0 22px;
+  gap: 12px;
+  border-radius: 12px;
+  font-size: .9rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease,
+    border-color .2s ease, filter .2s ease;
+}
+.hero-copy .hero-actions .cta-arrow, .home-page .cta .button > span { transition: transform .2s ease; }
+.hero-copy .btn-leaf {
+  background: linear-gradient(135deg, #8b6cff 0%, #6a4cf0 55%, #5639d6 100%);
+  color: #ffffff;
+  border: 1px solid rgb(255 255 255 / 14%);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 22%), 0 10px 22px -10px rgb(96 64 230 / 70%);
+}
+.hero-copy .btn-leaf:hover {
+  background: linear-gradient(135deg, #8b6cff 0%, #6a4cf0 55%, #5639d6 100%);
+  color: #ffffff;
+  filter: brightness(1.07);
+  transform: translateY(-2px);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 22%), 0 14px 28px -10px rgb(96 64 230 / 80%);
+}
+.hero-copy .btn-stone, .home-page .cta .button {
+  background: var(--surface);
+  color: var(--accent);
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--border));
+  box-shadow: 0 1px 2px rgb(20 30 60 / 6%);
+}
+.hero-copy .btn-stone:hover, .home-page .cta .button:hover {
+  background: color-mix(in srgb, var(--accent) 7%, var(--surface));
+  color: var(--accent);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px -12px var(--accent);
+}
+:root[data-theme="dark"] .hero-copy .btn-stone,
+:root[data-theme="dark"] .home-page .cta .button {
+  background: rgb(255 255 255 / 3%);
+  color: var(--tech);
+  border-color: color-mix(in srgb, var(--tech) 40%, var(--border));
+}
+:root[data-theme="dark"] .hero-copy .btn-stone:hover,
+:root[data-theme="dark"] .home-page .cta .button:hover {
+  background: color-mix(in srgb, var(--tech) 10%, transparent);
+  color: var(--tech);
+  border-color: var(--tech);
+  box-shadow: 0 10px 22px -12px var(--tech);
+}
+.hero-copy .hero-actions a:hover .cta-arrow, .home-page .cta .button:hover > span { transform: translateX(3px); }
+.hero-copy .hero-actions a:active, .home-page .cta .button:active { transform: translateY(0); }
+/* Desktop: texto largo + flecha. Mobile (ver media query): ícono + texto corto. */
+.cta-icon { display: none; width: 18px; height: 18px; flex-shrink: 0; }
+.cta-short { display: none; }
+.hero-copy .hero-actions a:focus-visible, .home-page .cta .button:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 12px;
+}
+
+/* Núcleo digital: mismo SVG de facetas, ahora con órbitas de tecnologías web. */
+.digital-core {
+  --violet: #7c5cff;
+  --cyan: #22b8d6;
+  position: relative;
+  height: 296px;
+  min-width: 0;
+  display: grid;
+  place-items: center;
+  isolation: isolate;
+  pointer-events: none;
+}
+:root[data-theme="dark"] .digital-core { --violet: #8f74ff; --cyan: #5fe0f0; }
+
+/* Luz localizada del núcleo: violeta en la gema, cian sobre el pedestal.
+   closest-side: cada luz se apaga antes de tocar el borde de la caja. */
+.core-halo {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(circle closest-side at 50% 40%, color-mix(in srgb, var(--violet) 26%, transparent), transparent),
+    radial-gradient(ellipse closest-side at 50% 74%, color-mix(in srgb, var(--cyan) 16%, transparent), transparent);
+}
+:root[data-theme="dark"] .core-halo {
+  background:
+    radial-gradient(circle closest-side at 50% 40%, color-mix(in srgb, var(--violet) 38%, transparent), transparent),
+    radial-gradient(ellipse closest-side at 50% 74%, color-mix(in srgb, var(--cyan) 20%, transparent), transparent);
+}
+
+/* Órbitas: trazo en degradado violeta → cian y nodos con brillo propio. */
+.core-orbits { position: absolute; width: 100%; height: 100%; overflow: visible; }
+.orbit-stop-a { stop-color: var(--violet); }
+.orbit-stop-b { stop-color: var(--cyan); }
+.core-orbits ellipse { stroke: url(#orbitGradient); stroke-width: 1; opacity: .45; }
+.core-orbits .orbit-fine { stroke: var(--violet); stroke-dasharray: 2 7; opacity: .25; }
+.orbit-nodes circle { fill: var(--cyan); filter: drop-shadow(0 0 4px var(--cyan)); }
+.orbit-nodes .node-violet { fill: var(--violet); filter: drop-shadow(0 0 4px var(--violet)); }
+
+/* Pedestal: disco con volumen (tapa + canto) y un haz de luz suave hacia la gema. */
+.core-platform {
+  --disc-top: linear-gradient(180deg, #ffffff, #ece8fb);
+  --disc-side: linear-gradient(180deg, #ddd8f4, #c9cfea);
+  position: absolute;
+  top: 73%;
+  width: 168px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--violet) 55%, transparent);
+  background:
+    radial-gradient(ellipse closest-side, color-mix(in srgb, var(--violet) 28%, transparent), transparent),
+    var(--disc-top);
+  box-shadow:
+    0 0 18px color-mix(in srgb, var(--violet) 35%, transparent),
+    inset 0 0 12px color-mix(in srgb, var(--cyan) 25%, transparent);
+}
+:root[data-theme="dark"] .core-platform {
+  --disc-top: linear-gradient(180deg, #232d4d, #161f36);
+  --disc-side: linear-gradient(180deg, #1a2238, #0e1422);
+}
+/* Canto del disco: una elipse igual, 14 px más abajo y detrás de la tapa. */
+.core-platform::after {
+  content: '';
+  position: absolute;
+  inset: 13px -1px -15px;
+  z-index: -1;
+  border-radius: 50%;
+  background: var(--disc-side);
+  border: 1px solid color-mix(in srgb, var(--violet) 30%, transparent);
+  box-shadow: 0 14px 26px -8px color-mix(in srgb, var(--violet) 40%, transparent);
+}
+.core-platform::before {
+  content: '';
+  position: absolute;
+  inset: 8px 28px;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--cyan) 50%, transparent);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--cyan) 30%, transparent);
+}
+.core-platform i {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  width: 90px;
+  height: 120px;
+  transform: translateX(-50%);
+  background: linear-gradient(to top, color-mix(in srgb, var(--cyan) 18%, transparent), transparent);
+  clip-path: polygon(22% 0, 78% 0, 100% 100%, 0 100%);
+  filter: blur(6px);
+}
+
+/* La gema de Daniela: mismo SVG, con más presencia y luz violeta/cian. */
+/* El SVG de Daniela no se modifica: el contenedor lo estiliza en vertical
+   (más angosto y más alto), como el cristal alargado de la referencia. */
+.digital-core .gem-crystal {
+  width: 232px;
+  height: 258px;
+  margin: -48px 0 0;
+  transform: scale(.78, 1.14);
+}
+.digital-core .gem-svg {
+  width: 232px;
+  height: 258px;
+  animation: core-float 7s ease-in-out infinite;
+  filter:
+    drop-shadow(0 0 14px color-mix(in srgb, var(--violet) 40%, transparent))
+    drop-shadow(0 16px 28px color-mix(in srgb, var(--cyan) 22%, transparent));
+}
+:root[data-theme="dark"] .digital-core .gem-svg {
+  filter:
+    drop-shadow(0 0 18px color-mix(in srgb, var(--violet) 60%, transparent))
+    drop-shadow(0 18px 34px color-mix(in srgb, var(--cyan) 30%, transparent));
+}
+/* Las facetas y aristas originales se conservan; cambia la luz que las atraviesa. */
+.digital-core .gem-svg linearGradient[id^="facet"] stop { stop-opacity: .85; }
+.digital-core #facetBlue stop:nth-child(2),
+.digital-core #facetGreen stop:nth-child(2) { stop-color: #58c4ee; }
+.digital-core #facetBlue stop:nth-child(3),
+.digital-core #facetGreen stop:nth-child(3) { stop-color: #2a8fd0; }
+.digital-core #facetCoral stop:nth-child(2),
+.digital-core #facetGold stop:nth-child(2),
+.digital-core #facetLavender stop:nth-child(2) { stop-color: #a184f5; }
+.digital-core #facetCoral stop:nth-child(3),
+.digital-core #facetGold stop:nth-child(3),
+.digital-core #facetLavender stop:nth-child(3) { stop-color: #6a4ae0; }
+.digital-core .gem-facet { stroke: rgb(232 240 255 / 70%); stroke-width: .55; }
+.digital-core .gem-dust { background: var(--cyan); box-shadow: 0 0 6px var(--cyan); }
+.digital-core .gd-2, .digital-core .gd-4 { background: var(--violet); box-shadow: 0 0 6px var(--violet); }
+
+/* Chips de tecnologías: superficie de vidrio con borde en degradado. */
+/* Cada chip usa su propio color (--chip) en borde, texto y brillo. */
+.tech-node {
+  --chip: var(--cyan);
+  --chip-face: linear-gradient(180deg, #ffffff, #f3f1fd);
+  position: absolute;
+  display: grid;
+  place-items: center;
+  min-width: 50px;
+  height: 42px;
+  padding: 0 12px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  background:
+    var(--chip-face) padding-box,
+    linear-gradient(145deg, var(--chip), color-mix(in srgb, var(--chip) 15%, transparent) 70%) border-box;
+  color: var(--chip);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 70%),
+    0 10px 22px -10px color-mix(in srgb, var(--chip) 70%, transparent);
+  font-family: var(--font-heading);
+  font-size: .84rem;
+  font-weight: 700;
+  letter-spacing: .03em;
+}
+:root[data-theme="dark"] .tech-node {
+  --chip-face: linear-gradient(180deg, #1c2744, #121a2e);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 8%),
+    0 0 20px -4px color-mix(in srgb, var(--chip) 60%, transparent);
+}
+.node-code {
+  left: 9%;
+  top: 30%;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border-radius: 50%;
+  color: #ffffff;
+  font-size: 1rem;
+  background:
+    linear-gradient(135deg, #8b6cff, #5a3fd6) padding-box,
+    linear-gradient(135deg, rgb(255 255 255 / 50%), rgb(255 255 255 / 10%)) border-box;
+  box-shadow: 0 8px 22px -6px rgb(110 80 240 / 70%);
+}
+:root[data-theme="dark"] .node-code {
+  background:
+    linear-gradient(135deg, #8b6cff, #5a3fd6) padding-box,
+    linear-gradient(135deg, rgb(255 255 255 / 45%), rgb(255 255 255 / 5%)) border-box;
+  box-shadow: 0 0 22px -2px rgb(127 92 255 / 70%);
+}
+.node-html { right: 12%; top: 34%; --chip: var(--cyan); }
+.node-css { right: 15%; bottom: 17%; --chip: var(--violet); }
+.node-js { left: 19%; bottom: 20%; --chip: #b07d05; }
+:root[data-theme="dark"] .node-js { --chip: #f2cc5b; }
+
+/* Palabras clave arriba a la derecha, en columna y alineadas a la izquierda,
+   con una línea fina violeta → cian que las ancla a la composición. */
+.core-caption {
+  position: absolute;
+  top: 10px;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding-left: 12px;
+  border-left: 1px solid transparent;
+  border-image: linear-gradient(to bottom, var(--violet), var(--cyan)) 1;
+  color: var(--text-muted);
+  font-size: .6rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  opacity: .85;
+}
+.core-caption span:nth-child(2) { color: var(--violet); }
+@keyframes core-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+
+/* El equipo aparece inmediatamente después de la presentación. */
+.home-page .team-section {
+  padding: 18px 0 28px;
+  background: none;
+  border-radius: 0;
+  border-top: 1px solid var(--border);
+  overflow: visible;
+}
+.home-page .section-heading {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  gap: 20px;
+  padding: 0;
+  margin-bottom: 18px;
+  border: none;
+}
+.home-page .section-heading > div, .home-page .section-heading h2 { text-align: left; }
+.home-page .section-heading h2 { font-size: clamp(1.45rem, 2.5vw, 1.85rem); letter-spacing: -.04em; }
+.home-page .label-tag { font-size: .7rem; letter-spacing: .18em; margin: 0 0 6px; color: var(--tech); }
+.team-intro { margin: 6px 0 0; font-size: .85rem; color: var(--text-muted); }
+/* Mezclar tarjetas: barra tipo slider. main.js mueve el ícono con la variable
+   --knob-x mientras se arrastra; al soltar vuelve al inicio con una transición. */
+.home-page .shuffle-slider {
+  --knob: 36px;
+  position: relative;
+  flex-shrink: 0;
+  width: 232px;
+  height: 44px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--border));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 7%, var(--surface));
+  color: var(--accent);
+  font-size: .85rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: pan-y; /* el arrastre horizontal es nuestro; el scroll vertical sigue funcionando */
+  box-shadow: inset 0 1px 2px rgb(20 30 60 / 6%);
+  transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease;
+}
+.home-page .shuffle-slider.is-dragging { cursor: grabbing; }
+.shuffle-fill {
+  position: absolute;
+  top: 3px;
+  bottom: 3px;
+  left: 3px;
+  width: calc(var(--knob-x, 0px) + var(--knob));
+  border-radius: 999px;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--accent) 10%, transparent), color-mix(in srgb, var(--accent) 24%, transparent));
+  transition: width .35s cubic-bezier(.3, .7, .3, 1);
+}
+.shuffle-knob {
+  position: absolute;
+  z-index: 1;
+  top: 3px;
+  left: 3px;
+  display: grid;
+  place-items: center;
+  width: var(--knob);
+  height: var(--knob);
+  border-radius: 50%;
+  background: linear-gradient(135deg, #8b6cff, #5a3fd6);
+  color: #ffffff;
+  font-size: 1.05rem;
+  line-height: 1;
+  box-shadow: 0 4px 12px -4px rgb(96 64 230 / 70%);
+  transform: translateX(var(--knob-x, 0px));
+  transition: transform .35s cubic-bezier(.3, .7, .3, 1), box-shadow .2s ease;
+}
+.shuffle-label {
+  position: relative;
+  display: block;
+  padding: 0 30px 0 50px;
+  line-height: 42px;
+  white-space: nowrap;
+}
+/* Pista: flechas tenues que invitan a deslizar. */
+.shuffle-label::after {
+  content: '›››';
+  position: absolute;
+  right: 12px;
+  letter-spacing: -1px;
+  opacity: .45;
+}
+.shuffle-slider.is-dragging .shuffle-knob,
+.shuffle-slider.is-dragging .shuffle-fill { transition: none; }
+.home-page .shuffle-slider:hover { border-color: var(--accent); box-shadow: 0 10px 20px -14px var(--accent); }
+.home-page .shuffle-slider:hover:not(.is-dragging) .shuffle-knob { transform: translateX(calc(var(--knob-x, 0px) + 4px)); }
+.home-page .shuffle-slider:active .shuffle-knob { box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent) 20%, transparent); }
+.home-page .shuffle-slider.is-done .shuffle-knob { box-shadow: 0 0 0 7px color-mix(in srgb, var(--accent) 22%, transparent); }
+.home-page .shuffle-slider:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; border-radius: 999px; }
+:root[data-theme="dark"] .home-page .shuffle-slider {
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  color: #d6cbff;
+  box-shadow: inset 0 1px 2px rgb(0 0 0 / 30%);
+}
+/* Respuesta breve de la grilla después de mezclar. */
+.team-grid.is-shuffled .member-card { animation: card-settle .35s ease-out; }
+@keyframes card-settle { from { opacity: .4; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.home-page .team-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }
+/* Tarjeta: el acento del integrante aparece en la barra superior, en un velo
+   suave desde arriba, en el aro del avatar y en "Ver perfil". */
+.home-page .member-card {
+  --accent-soft-mix: color-mix(in srgb, var(--member-accent) 11%, transparent);
+  --card-face: linear-gradient(180deg, var(--surface), color-mix(in srgb, var(--surface-soft) 55%, var(--surface)));
+  --card-edge: linear-gradient(180deg, color-mix(in srgb, var(--member-accent) 55%, var(--border)), var(--border) 55%);
+  padding: 18px 14px 14px;
+  border-radius: 16px;
+  width: 100%;
+  cursor: pointer;
+  /* Borde en degradado: el color del integrante arriba, neutro abajo. */
+  border: 1px solid transparent;
+  background:
+    radial-gradient(120% 55% at 50% 0%, var(--accent-soft-mix), transparent 70%) padding-box,
+    var(--card-face) padding-box,
+    var(--card-edge) border-box;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 60%), 0 6px 18px -10px rgb(28 40 75 / 18%);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+:root[data-theme="dark"] .home-page .member-card {
+  --card-face: linear-gradient(180deg, #1a2540, #131c30);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 5%), 0 10px 24px -14px rgb(0 0 0 / 60%);
+}
+/* Velo de hover: se anima por opacidad (los degradados no se pueden transicionar). */
+.home-page .member-card::before {
+  display: block;
+  content: '';
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(120% 70% at 50% 0%, color-mix(in srgb, var(--member-accent) 16%, transparent), transparent 75%);
+  box-shadow: none;
+  opacity: 0;
+  animation: none;
+  transition: opacity .25s ease;
+}
+/* Barra superior: apoyada sobre el borde, dentro del tramo recto de la esquina. */
+.home-page .member-card::after {
+  top: -1px;
+  left: 18px;
+  right: 18px;
+  height: 2px;
+  border-radius: 0 0 3px 3px;
+  background: linear-gradient(90deg, transparent, var(--member-accent), transparent);
+  box-shadow: 0 2px 10px color-mix(in srgb, var(--member-accent) 55%, transparent);
+  opacity: .85;
+  pointer-events: none;
+  transition: opacity .25s ease, left .25s ease, right .25s ease;
+}
+.home-page .card-portrait {
+  width: 80px;
+  height: 80px;
+  margin: 0 0 12px;
+  box-shadow: 0 0 0 3px var(--surface), 0 0 0 5px var(--member-accent), 0 0 14px color-mix(in srgb, var(--member-accent) 22%, transparent);
+  transition: box-shadow .25s ease;
+}
+.home-page .card-portrait img { transition: transform .35s ease; }
+.home-page .card-index { color: var(--text-muted); font-size: .7rem; font-weight: 500; }
+.home-page .card-body { flex: 1; }
+.home-page .card-body h3 { font-size: .98rem; line-height: 1.35; min-height: 1.35em; letter-spacing: -.025em; margin-bottom: 6px; }
+.home-page .role-header { font-size: .72rem; letter-spacing: .02em; margin: 0 0 6px; font-weight: 700; }
+.card-meta { margin: 0 0 10px; font-size: .75rem; color: var(--text-muted); line-height: 1.5; }
+.home-page .tags { width: 100%; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; margin: 0 0 12px; }
+/* Etiquetas con el tinte del integrante: más contraste y peso, sin perder sobriedad. */
+.home-page .tags span,
+.home-page .member-card:hover .tags span {
+  padding: 3px 4px;
+  border: 1px solid color-mix(in srgb, var(--member-accent) 28%, var(--border));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--member-accent) 8%, var(--surface));
+  color: var(--text);
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  white-space: normal;
+}
+:root[data-theme="dark"] .home-page .tags span {
+  background: color-mix(in srgb, var(--member-accent) 12%, #121a2e);
+  border-color: color-mix(in srgb, var(--member-accent) 32%, var(--border));
+  color: #e9eef8;
+}
+.home-page .card-link {
+  width: 100%;
+  margin-top: auto;
+  padding: 8px;
+  min-height: 38px;
+  border: 1px solid color-mix(in srgb, var(--member-accent) 40%, var(--border));
+  border-radius: 10px;
+  color: var(--member-accent);
+  font-size: .8rem;
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: 0;
+  gap: 10px;
+  transition: background-color .25s ease, border-color .25s ease, box-shadow .25s ease, color .25s ease;
+}
+/* Un único enlace nativo: su pseudo-elemento extiende el área a toda la tarjeta. */
+.home-page .card-link::after { content: ''; position: absolute; inset: 0; border-radius: 16px; z-index: 4; }
+.home-page .card-link > span { transition: transform .25s ease; }
+
+/* Hover y foco: elevación corta, borde y brillo del color propio. */
+.home-page .member-card:hover, .home-page .member-card:focus-within {
+  --card-edge: linear-gradient(180deg, var(--member-accent), color-mix(in srgb, var(--member-accent) 35%, var(--border)));
+  transform: translateY(-4px);
+  background:
+    radial-gradient(120% 55% at 50% 0%, var(--accent-soft-mix), transparent 70%) padding-box,
+    var(--card-face) padding-box,
+    var(--card-edge) border-box;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 10%),
+    0 16px 32px -14px color-mix(in srgb, var(--member-accent) 50%, transparent),
+    0 0 0 1px color-mix(in srgb, var(--member-accent) 20%, transparent);
+}
+.home-page .member-card:hover::before, .home-page .member-card:focus-within::before { opacity: 1; }
+.home-page .member-card:hover::after, .home-page .member-card:focus-within::after { opacity: 1; left: 10px; right: 10px; }
+.home-page .member-card:hover .card-portrait, .home-page .member-card:focus-within .card-portrait {
+  box-shadow: 0 0 0 3px var(--surface), 0 0 0 5px var(--member-accent), 0 0 26px color-mix(in srgb, var(--member-accent) 55%, transparent);
+}
+.home-page .member-card:hover .card-portrait img, .home-page .member-card:focus-within .card-portrait img { transform: scale(1.05); }
+.home-page .member-card:hover .card-link, .home-page .member-card:focus-within .card-link {
+  border-color: var(--member-accent);
+  background: color-mix(in srgb, var(--member-accent) 12%, var(--surface));
+  box-shadow: 0 6px 16px -8px var(--member-accent);
+}
+.home-page .member-card:hover .card-link > span, .home-page .member-card:focus-within .card-link > span { transform: translateX(3px); }
+.home-page .card-link:focus-visible { outline: none; }
+.home-page .card-link:focus-visible::after { outline: 3px solid var(--focus); outline-offset: 4px; }
+
+.home-page .cta { margin-bottom: 30px; }
+.home-page .cta-inner { padding: 24px 30px; gap: 24px; align-items: center; flex-wrap: nowrap; border-radius: 16px; }
+.home-page .cta-text { flex: 1; }
+.home-page .cta-text > p:first-child { font-size: .7rem; letter-spacing: .16em; margin: 0 0 8px; }
+.home-page .cta-text h2 { font-size: 1.5rem; line-height: 1.3; letter-spacing: -.035em; }
+.home-page .cta-text .cta-description { font-size: .85rem; color: var(--text-muted); letter-spacing: 0; text-transform: none; margin: 8px 0 0; }
+.home-page .cta .button { flex-shrink: 0; }
+.log-symbol {
+  width: 80px;
+  height: 74px;
+  flex-shrink: 0;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 13px;
+  background: var(--surface-soft);
+  box-shadow: -6px 6px 0 var(--accent-soft);
+}
+.log-symbol span { font-family: var(--font-heading); color: var(--tech); font-size: 1rem; }
+.log-symbol i { display: block; height: 2px; width: 70%; margin-top: 5px; background: var(--border); }
+.log-symbol i:nth-child(3) { width: 95%; background: var(--accent); opacity: .5; }
+.site-footer {
+  padding: 22px max(24px, calc((100% - 1160px) / 2));
+  justify-content: space-between;
+  gap: 20px;
+  text-transform: none;
+  font-size: .75rem;
+}
+
+/* Transición hacia cada página: el enlace navega normalmente (sin temporizadores
+   ni preventDefault) y el contenido de la página destino entra con un fundido
+   y un desplazamiento vertical corto. El header queda fijo como referencia. */
+main { animation: page-enter .3s ease-out; }
+@keyframes page-enter { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+@media (max-width: 1099px) {
+  /* 3 + 2 centrado: 6 columnas, cada tarjeta ocupa 2 y la cuarta arranca en la columna 2.
+     Es posicional, así que sigue funcionando después de Mezclar tarjetas. */
+  .home-page .team-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .home-page .member-card { grid-column: span 2; }
+  .home-page .member-card:nth-child(4) { grid-column: 2 / span 2; }
+  .home-page .hero { gap: 16px; }
+  .hero-copy h1 { font-size: 3.8rem; }
+  .digital-core { height: 290px; }
+  .digital-core .gem-crystal, .digital-core .gem-svg { width: 210px; height: 234px; }
+  .tech-node { min-width: 40px; height: 38px; font-size: .75rem; }
+}
+/* styles.css apila la Bitácora a 900 px; en la portada la mantenemos en fila hasta 700 px. */
+@media (max-width: 900px) {
+  .home-page .cta-inner { flex-direction: row; justify-content: flex-start; text-align: left; padding: 24px; }
+  .home-page .cta-text, .home-page .cta-text h2, .home-page .cta-text p { text-align: left; }
+}
+@media (max-width: 700px) {
+  .site-header { padding-inline: 16px; height: 72px; }
+  .site-footer { padding-inline: 16px; }
+  .home-page .section-shell { width: calc(100% - 32px); }
+  .home-page .hero { grid-template-columns: 1fr; padding-block: 32px 24px; gap: 10px; }
+  .hero-copy h1 { font-size: clamp(3.3rem, 12vw, 4.5rem); }
+  .hero-copy .eyebrow { font-size: .65rem; letter-spacing: .14em; margin-bottom: 18px; }
+  .hero-copy .hero-lead { margin: 18px 0; font-size: .95rem; }
+  .hero-copy .hero-actions a { width: auto; max-width: none; height: 46px; padding: 0 16px; gap: 8px; font-size: .85rem; }
+  .digital-core { height: 200px; max-width: 380px; width: 100%; margin-inline: auto; }
+  .digital-core .gem-crystal { width: 150px; height: 185px; margin-top: -20px; }
+  .digital-core .gem-svg { width: 140px; height: 180px; }
+  .core-platform { width: 110px; height: 28px; top: 69%; }
+  .core-caption { display: none; }
+  .node-code { left: 15%; top: 26%; }
+  .node-html { right: 15%; top: 21%; }
+  .node-css { right: 20%; bottom: 12%; }
+  .home-page .section-heading { align-items: flex-start; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
+  .home-page .team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .home-page .member-card, .home-page .member-card:nth-child(4) { grid-column: auto; }
+  .home-page .cta-inner { flex-wrap: wrap; gap: 20px; padding: 24px; text-align: left; flex-direction: row; }
+  .home-page .cta-text { flex-basis: 65%; text-align: left; }
+  .home-page .cta-text h2, .home-page .cta-text p { text-align: left; }
+  .home-page .cta .button { margin-left: 0; }
+  .site-footer { align-items: flex-start; }
+}
+@media (max-width: 600px) {
+  .main-nav { top: 72px; }
+  .site-header { gap: 8px; }
+}
+@media (max-width: 450px) {
+  .home-page .team-grid { grid-template-columns: 1fr; }
+  .home-page .member-card { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 18px; padding: 24px 18px 18px; text-align: left; }
+  .home-page .card-portrait { width: 86px; height: 86px; align-self: start; margin-top: 12px; }
+  .home-page .card-body { align-items: stretch; text-align: left; }
+  .home-page .card-body h3 { min-height: 0; margin-bottom: 6px; }
+  .home-page .role-header { font-size: .75rem; }
+  .home-page .card-meta { font-size: .75rem; margin-bottom: 10px; }
+  .home-page .tags { gap: 5px; margin-bottom: 10px; }
+  .home-page .tags span { text-align: center; }
+  .home-page .card-index { left: 18px; }
+  .home-page .cta-inner { padding: 22px; }
+  .log-symbol { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  main { animation: none; }
+  .home-page .member-card:hover, .home-page .member-card:focus-within,
+  .home-page .member-card:hover .card-link > span, .home-page .member-card:focus-within .card-link > span,
+  .home-page .member-card:hover .card-portrait img, .home-page .member-card:focus-within .card-portrait img,
+  .hero-copy .hero-actions a:hover, .hero-copy .hero-actions a:hover .cta-arrow,
+  .home-page .cta .button:hover, .home-page .cta .button:hover > span,
+  .home-page .shuffle-slider:hover { transform: none; }
+}
+
+/* ==========================================================================
+   Fase 4 — Experiencia mobile.
+   Desktop (con hover): la tarjeta completa enlaza al perfil, como antes.
+   Modo mobile/touch (pantallas angostas o táctiles sin hover): cara frontal con
+   número, avatar y nombre; al tocarla se abre la ficha ampliada con los datos.
+   ========================================================================== */
+
+/* Valores de desktop para los elementos nuevos. */
+.card-front { display: none; }
+.card-back { display: contents; }
+
+/* Volver arriba: texto + flecha en círculo, discreto. */
+.back-to-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+.back-to-top-icon {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--border));
+  background: color-mix(in srgb, var(--accent) 7%, var(--surface));
+  color: var(--accent);
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.back-to-top-icon svg { width: 16px; height: 16px; }
+.site-footer .back-to-top:hover { color: var(--accent); }
+.back-to-top:hover .back-to-top-icon {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  box-shadow: 0 8px 16px -8px var(--accent);
+}
+.back-to-top:focus-visible { outline-offset: 4px; border-radius: 999px; }
+/* Páginas internas: el mismo botón circular, pero vuelve a la portada. La flecha
+   apunta a la izquierda, así que se desplaza hacia ese lado y no flota en vertical. */
+.site-footer--internal .back-to-top:hover .back-to-top-icon { transform: translateX(-2px); }
+.site-footer--internal .back-to-top-icon { animation: none; }
+
+/* ---------- Mobile: composición, CTAs, encabezado de Equipo y footer ---------- */
+@media (max-width: 700px) {
+  /* El Hero ocupa la pantalla menos --equipo-peek: lo justo para que debajo se vean
+     el separador, la fila "EL EQUIPO + Mezclar" y el título, con aire antes del borde
+     y sin ninguna tarjeta cortada. La gema baja al pie del Hero, sobre las montañas. */
+  .home-page {
+    /* Lo que puede verse de Equipo sin que asome una tarjeta:
+       separador 1 + padding 20 + fila 40 + separación 10 + título 30 + margen 14. */
+    --equipo-peek: 115px;
+  }
+  .home-page .hero {
+    min-height: calc(100vh - 72px - var(--equipo-peek));
+    min-height: calc(100svh - 72px - var(--equipo-peek));
+    grid-template-rows: auto 1fr;
+    padding-block: 26px 30px; /* aire real entre la escena y el separador */
+    gap: 0;
+  }
+  /* Las montañas acompañan a la escena y dejan el mismo aire debajo. */
+  .home-page .hero::before { bottom: 18px; }
+  /* El núcleo crece como conjunto (gema, órbitas, chips y pedestal) un 20 %.
+     El origen abajo lo mantiene apoyado sobre las montañas. */
+  /* La escena se centra en el espacio entre los CTAs y el pie del Hero. */
+  .home-page .digital-core {
+    align-self: center;
+    width: min(calc((100vw - 16px) / 1.2), 320px);
+    margin-block: 20px 0;
+    transform: scale(1.2);
+    transform-origin: 50% 50%; /* crece parejo hacia arriba y abajo: queda centrada */
+  }
+  .home-page .team-section { padding-top: 20px; } /* aire antes de "EL EQUIPO" */
+  #equipo { scroll-margin-top: 72px; }
+
+  /* CTAs compactos: ícono + texto corto (el aria-label conserva el texto completo). */
+  .hero-copy .hero-actions { gap: 10px; }
+  .hero-copy .hero-actions a { padding: 0 18px; gap: 8px; }
+  .cta-icon { display: block; }
+  .cta-long, .hero-copy .cta-arrow { display: none; }
+  .cta-short { display: inline; }
+  .hero-copy .hero-actions a:active { transform: scale(.97); }
+
+  /* Cabecera de Equipo en dos filas:
+     "EL EQUIPO" a la izquierda y Mezclar a la derecha; debajo, el título.
+     display: contents deja que la etiqueta y el título participen de la grilla. */
+  .team-intro { display: none; }
+  .home-page .section-heading {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas: "label shuffle" "title title";
+    align-items: center;
+    gap: 10px 12px;
+    margin-bottom: 14px;
+  }
+  .home-page .section-heading > div { display: contents; }
+  /* "EL EQUIPO" anuncia la sección: más tamaño y peso, sin agrandar la fila (40 px). */
+  .home-page .section-heading .label-tag {
+    grid-area: label;
+    margin: 0;
+    font-size: .84rem;
+    font-weight: 800;
+    letter-spacing: .16em;
+    line-height: 18px;
+  }
+  .home-page .section-heading h2 { grid-area: title; font-size: 1.4rem; line-height: 30px; }
+  .home-page .shuffle-slider { grid-area: shuffle; width: 178px; height: 40px; }
+  .home-page .shuffle-slider .shuffle-label { padding: 0 14px 0 46px; line-height: 38px; font-size: .8rem; }
+  .home-page .shuffle-slider .shuffle-label::after { content: none; }
+  .home-page .shuffle-slider { --knob: 32px; }
+
+  /* Footer: marca y flecha en la misma fila, texto debajo. */
+  .site-footer {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 14px 16px;
+    text-align: left;
+  }
+  .site-footer p { grid-column: 1 / -1; grid-row: 2; margin: 0; }
+  .back-to-top-text { display: none; }
+  .back-to-top {
+    grid-column: 2;
+    grid-row: 1;
+    width: 44px;          /* área táctil cómoda aunque el ícono sea chico */
+    height: 44px;
+    justify-content: center;
+  }
+  .back-to-top-icon { width: 38px; height: 38px; animation: back-to-top-float 3.2s ease-in-out infinite; }
+  .back-to-top:active .back-to-top-icon { transform: scale(.92); }
+}
+@keyframes back-to-top-float {
+  0%, 100% { transform: translateY(0); box-shadow: 0 0 0 0 transparent; }
+  50% { transform: translateY(-3px); box-shadow: 0 6px 14px -6px color-mix(in srgb, var(--accent) 55%, transparent); }
+}
+
+/* Tablet vertical (701–900 px): texto arriba y la escena justo debajo, sin
+   estirar el Hero hasta el alto de la pantalla (eso dejaba un gran vacío sobre
+   la gema). EL EQUIPO asoma al final del primer viewport.
+   --gem-w define la escena entera: gema, alto del núcleo y órbita de los chips
+   (refinement.css) crecen juntos, así el pedestal y las órbitas no se desfasan. */
+@media (min-width: 701px) and (max-width: 900px) {
+  .home-page { --gem-w: clamp(244px, 31vw, 270px); }
+  .home-page .hero {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    min-height: 0;
+    padding-block: 44px 20px;
+    gap: 0;
+  }
+  /* Aire entre los botones y la escena: baja la gema (sin cambiar su tamaño) para
+     que el primer pantallazo termine con el encabezado de EL EQUIPO y la grilla
+     arranque justo después del fold. Lo que queda sobre la grilla sin este aire:
+     header 72 + Hero (44 + texto 289 + 16 + núcleo + 20) + Equipo 18 + encabezado 88
+     + margen 18 = 565 px + núcleo; +12 px de seguridad → 100svh − 553 px − núcleo.
+     El tope evita volver a un vacío grande en tablets muy altas. */
+  .home-page .digital-core {
+    align-self: start;
+    width: 100%;
+    max-width: 600px;
+    height: calc(var(--gem-w) * 1.28);
+    margin: calc(16px + clamp(64px, 100vh - 553px - var(--gem-w) * 1.28, 160px)) auto 0;
+    margin: calc(16px + clamp(64px, 100svh - 553px - var(--gem-w) * 1.28, 160px)) auto 0;
+  }
+  .digital-core .gem-crystal, .digital-core .gem-svg { width: var(--gem-w); height: calc(var(--gem-w) / .9); }
+  .tech-node { min-width: 48px; height: 44px; font-size: .86rem; }
+  .node-code { width: 52px; height: 52px; font-size: 1.05rem; }
+}
+
+/* ---------- Modo mobile/touch (misma consulta que flipMode en main.js) ----------
+   En la grilla solo se ve la cara frontal (número, avatar y nombre). Al tocarla
+   se abre la ficha ampliada (#member-sheet). El contenido completo de la tarjeta
+   (.card-back) queda oculto: main.js lo usa como fuente de datos de la ficha. */
+@media (max-width: 700px), (hover: none) and (pointer: coarse) {
+  .home-page .member-card,
+  .home-page .member-card:hover,
+  .home-page .member-card:focus-within {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    box-shadow: none;
+    transform: none;
+    cursor: default;
+    text-align: center;
+  }
+  .home-page .member-card::before, .home-page .member-card::after { display: none; }
+  .home-page .card-back { display: none; }
+  /* Mientras la ficha está abierta, la tarjeta de origen conserva su lugar pero no se ve. */
+  .home-page .member-card.is-sheet-source { visibility: hidden; }
+
+  /* Cara frontal: número, avatar y nombre. Es un <button> que cubre toda la tarjeta. */
+  .home-page .card-front {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    min-height: 236px;
+    padding: 18px 12px 14px;
+    border: 1px solid transparent;
+    border-radius: 16px;
+    background:
+      radial-gradient(120% 55% at 50% 0%, var(--accent-soft-mix), transparent 70%) padding-box,
+      var(--card-face) padding-box,
+      var(--card-edge) border-box;
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 60%), 0 6px 18px -10px rgb(28 40 75 / 18%);
+    color: var(--text);
+    font: inherit;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform .2s ease, box-shadow .25s ease;
+  }
+  :root[data-theme="dark"] .home-page .card-front {
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 5%), 0 10px 24px -14px rgb(0 0 0 / 60%);
+  }
+  /* Barra superior con el color del integrante. */
+  .home-page .card-front::after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 18px;
+    right: 18px;
+    height: 2px;
+    border-radius: 0 0 3px 3px;
+    background: linear-gradient(90deg, transparent, var(--member-accent), transparent);
+    box-shadow: 0 2px 10px color-mix(in srgb, var(--member-accent) 55%, transparent);
+  }
+  .home-page .card-front .card-index { top: 10px; left: 12px; }
+  .card-front-avatar {
+    width: 92px;
+    height: 92px;
+    overflow: hidden;
+    border-radius: 50%;
+    box-shadow:
+      0 0 0 3px var(--surface),
+      0 0 0 5px var(--member-accent),
+      0 0 18px color-mix(in srgb, var(--member-accent) 35%, transparent);
+  }
+  .card-front-avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .card-front-name {
+    font-family: var(--font-heading);
+    font-size: .95rem;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -.02em;
+  }
+  /* Señal de que la tarjeta se puede ampliar. */
+  .card-front-hint {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    display: grid;
+    place-items: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: 1px solid color-mix(in srgb, var(--member-accent) 35%, transparent);
+    background: color-mix(in srgb, var(--member-accent) 12%, transparent);
+    color: var(--member-accent);
+    font-size: .95rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .home-page .card-front:active { transform: scale(.97); }
+  .home-page .card-front:active .card-front-avatar {
+    box-shadow:
+      0 0 0 3px var(--surface),
+      0 0 0 5px var(--member-accent),
+      0 0 26px color-mix(in srgb, var(--member-accent) 60%, transparent);
+  }
+  .home-page .card-front:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 16px; }
+}
+
+/* ---------- Mobile: grilla 3 + 2 compacta ----------
+   Seis columnas; cada tarjeta ocupa dos y la cuarta arranca en la columna 2,
+   así la segunda fila queda centrada. Es posicional (nth-child), por lo que
+   sigue funcionando igual después de Mezclar tarjetas. Las medidas crecen con
+   el ancho (clamp) entre un celular de 375 px y uno de 480 px. */
+@media (max-width: 700px) {
+  /* Filas con el mismo aire de antes; entre columnas un poco menos, para que cada tarjeta gane ancho. */
+  .home-page .team-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: clamp(8px, 2.6vw, 14px) clamp(7px, 2.2vw, 12px); }
+  .home-page .member-card:nth-child(n) { grid-column: span 2; }
+  .home-page .member-card:nth-child(4) { grid-column: 2 / span 2; }
+
+  /* Frente compacto: número, avatar, nombre y un "+" que indica que se amplía.
+     min-height: todas miden igual aunque el nombre ocupe una o dos líneas. */
+  .home-page .card-front {
+    gap: clamp(14px, 3.8vw, 18px);
+    justify-content: flex-start;
+    min-height: clamp(190px, 25px + 44vw, 226px);
+    padding: clamp(34px, 9vw, 38px) 6px 16px;
+  }
+  .home-page .card-front .card-index { top: 8px; left: 10px; }
+  .card-front-avatar { width: clamp(78px, 20.8vw, 96px); height: clamp(78px, 20.8vw, 96px); flex-shrink: 0; }
+  .card-front-name { font-size: clamp(.82rem, .5rem + 1.35vw, .95rem); line-height: 1.2; letter-spacing: -.01em; overflow-wrap: anywhere; }
+  .card-front-hint { top: 6px; right: 6px; bottom: auto; width: 22px; height: 22px; font-size: .9rem; }
+}
+
+/* ---------- Ficha ampliada (mobile/touch) ----------
+   Un único <dialog> para todo el equipo. main.js copia los datos de la tarjeta,
+   fija --member-accent con data-member y anima con transform/opacity:
+   .sheet-card viaja desde la tarjeta (FLIP) y .sheet-flipper gira 180°.
+   El dialog ocupa toda la pantalla; el velo es .sheet-scrim (animable), no ::backdrop. */
+.member-sheet {
+  --accent-soft-mix: color-mix(in srgb, var(--member-accent) 11%, transparent);
+  --card-face: linear-gradient(180deg, var(--surface), color-mix(in srgb, var(--surface-soft) 55%, var(--surface)));
+  --card-edge: linear-gradient(180deg, var(--member-accent), color-mix(in srgb, var(--member-accent) 35%, var(--border)));
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 16px;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  overflow: hidden;
+}
+:root[data-theme="dark"] .member-sheet { --card-face: linear-gradient(180deg, #1a2540, #131c30); }
+.member-sheet[open] { display: grid; place-items: center; }
+.member-sheet::backdrop { background: transparent; }
+html:has(.member-sheet[open]) { overflow: hidden; }
+
+.sheet-scrim {
+  position: absolute;
+  inset: 0;
+  background: rgb(22 28 52 / 50%); /* sin blur: el fundido del velo es más liviano */
+}
+:root[data-theme="dark"] .sheet-scrim { background: rgb(3 7 18 / 65%); }
+
+/* El alto lo define el contenido del dorso (nunca más que la pantalla: si no
+   entra, el dorso hace scroll). */
+.sheet-card {
+  position: relative;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr);
+  width: min(100%, 340px);
+  max-height: 100%;
+  perspective: 1100px;
+}
+.sheet-flipper {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr);
+  transform-style: preserve-3d;
+}
+.member-sheet.is-turned .sheet-flipper { transform: rotateY(180deg); }
+
+.sheet-face {
+  grid-area: 1 / 1;
+  position: relative;
+  min-height: 0;
+  border: 1px solid transparent;
+  border-radius: 18px;
+  background:
+    radial-gradient(120% 45% at 50% 0%, var(--accent-soft-mix), transparent 70%) padding-box,
+    var(--card-face) padding-box,
+    var(--card-edge) border-box;
+  box-shadow: 0 24px 48px -20px rgb(22 28 52 / 50%), 0 0 0 1px color-mix(in srgb, var(--member-accent) 16%, transparent);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.sheet-face::after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 24px;
+  right: 24px;
+  height: 2px;
+  border-radius: 0 0 3px 3px;
+  background: linear-gradient(90deg, transparent, var(--member-accent), transparent);
+  box-shadow: 0 2px 10px color-mix(in srgb, var(--member-accent) 55%, transparent);
+}
+
+/* Frente: copia de la cara frontal de la tarjeta, con su tamaño real y escalada
+   por --k (ancho de la ficha / ancho de la tarjeta). Al comenzar el vuelo la ficha
+   mide lo mismo que la tarjeta, así que el frente coincide con ella. */
+.sheet-front { display: grid; place-items: center; overflow: hidden; }
+.member-sheet .sheet-front .card-front {
+  flex: none;
+  width: var(--from-w, 110px);
+  height: var(--from-h, 140px);
+  min-height: 0;
+  border: 0;
+  background: none;
+  box-shadow: none;
+  transform: scale(var(--k, 1));
+  transition: none;
+  cursor: default;
+}
+.member-sheet .sheet-front .card-front::after { display: none; }
+
+/* Dorso: datos completos. */
+.sheet-back {
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 22px 20px 24px;
+  overflow-y: auto;
+  text-align: center;
+}
+.sheet-close {
+  position: absolute;
+  z-index: 1;
+  top: 10px;
+  right: 10px;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--surface-soft);
+  color: var(--text);
+  font: inherit;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.sheet-close:active { transform: scale(.92); }
+.sheet-close:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.sheet-portrait {
+  flex: none;
+  width: 84px;
+  height: 84px;
+  margin: 4px 0 14px;
+  overflow: hidden;
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 3px var(--surface),
+    0 0 0 5px var(--member-accent),
+    0 0 22px color-mix(in srgb, var(--member-accent) 40%, transparent);
+}
+.sheet-portrait img { width: 100%; height: 100%; object-fit: cover; }
+.sheet-role {
+  margin: 0 0 4px;
+  color: var(--member-accent);
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+}
+.sheet-name {
+  margin: 0 0 18px;
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  line-height: 1.2;
+  letter-spacing: -.02em;
+}
+.sheet-meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  width: 100%;
+  margin: 0 0 18px;
+}
+.sheet-meta div {
+  padding: 7px 10px;
+  border: 1px solid color-mix(in srgb, var(--member-accent) 20%, var(--border));
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--member-accent) 6%, var(--surface));
+  text-align: left;
+}
+.sheet-meta dt, .sheet-skills-title {
+  color: var(--text-muted);
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.sheet-meta dd { margin: 2px 0 0; font-size: .82rem; font-weight: 600; line-height: 1.3; }
+.sheet-skills-title { align-self: flex-start; margin: 0 0 6px; }
+.sheet-skills {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  width: 100%;
+  margin: 0 0 24px;
+  padding: 0;
+  list-style: none;
+}
+.sheet-skills li {
+  padding: 5px 8px;
+  border: 1px solid color-mix(in srgb, var(--member-accent) 28%, var(--border));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--member-accent) 8%, var(--surface));
+  font-size: .78rem;
+  font-weight: 600;
+}
+:root[data-theme="dark"] .sheet-skills li {
+  background: color-mix(in srgb, var(--member-accent) 12%, #121a2e);
+  border-color: color-mix(in srgb, var(--member-accent) 32%, var(--border));
+  color: #e9eef8;
+}
+.sheet-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 46px;
+  margin-top: auto;
+  border: 1px solid var(--member-accent);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--member-accent) 12%, var(--surface));
+  color: var(--member-accent);
+  font-size: .9rem;
+  font-weight: 700;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.sheet-link:active { transform: scale(.98); }
+.sheet-link:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+
+/* Pantallas bajas (p. ej. 375×667): se ajusta el aire del Hero para que la
+   cabecera de Equipo siga entrando antes del borde. */
+@media (max-width: 700px) and (max-height: 720px) {
+  .home-page .hero { padding-top: 16px; }
+  .hero-copy .eyebrow { margin-bottom: 10px; }
+  .hero-copy .hero-lead { margin: 12px 0 16px; }
+  .home-page .digital-core { height: 184px; margin-top: 10px; transform: scale(1.15); }
+  /* El pantallazo termina con la franja EL EQUIPO + Mezclar tarjetas centrada entre
+     el separador y el borde; más aire entre esa franja y el título lo deja entero
+     debajo del borde (no asoma cortado). */
+  .home-page .section-heading { row-gap: 24px; }
+}
+/* Pantallas altas: un poco más de aire en el texto del Hero reparte el espacio
+   que queda sobre la gema (sin achicar nada). */
+@media (max-width: 700px) and (min-height: 780px) {
+  .home-page .hero { padding-top: 40px; }
+  .hero-copy .eyebrow { margin-bottom: 22px; }
+  .hero-copy .hero-lead { margin: 22px 0 30px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .back-to-top-icon { animation: none; }
+  .team-grid.is-shuffled .member-card { animation: none; }
+}
+
+/* ---------- Nuestra esencia (manifiesto) ----------
+   Retoma el lenguaje editorial del manifiesto original de Daniela
+   (etiqueta, título en dos líneas con énfasis, texto breve y comillas),
+   sin fondo de pergamino: usa las superficies y colores del tema actual. */
+.home-page .essence {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  align-items: center;
+  gap: 40px;
+  margin-block: 8px 30px;
+  padding: 36px 40px;
+  border-top: 1px solid var(--border);
+}
+.essence-aside {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle closest-side at 50% 46%, color-mix(in srgb, var(--accent) 20%, transparent), color-mix(in srgb, var(--tech) 6%, transparent) 60%, transparent);
+}
+/* Luz de apoyo bajo la gema: la ancla sin agregar un pedestal. */
+.essence-aside::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 6%;
+  width: 46%;
+  height: 7%;
+  translate: -50% 0;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--tech) 34%, transparent), transparent);
+  pointer-events: none;
+}
+.essence-gem {
+  position: relative;
+  z-index: 1;
+  width: 68%;
+  height: auto;
+  overflow: visible;
+  filter:
+    drop-shadow(0 0 14px color-mix(in srgb, var(--accent) 30%, transparent))
+    drop-shadow(0 10px 16px color-mix(in srgb, var(--accent) 22%, transparent));
+}
+.essence-content {
+  position: relative;
+  padding-left: 28px;
+  border-left: 2px solid transparent;
+  border-image: linear-gradient(to bottom, var(--accent), var(--tech)) 1;
+}
+/* Comillas grandes y tenues: guiño al manifiesto original. */
+.essence-content::before {
+  content: '“';
+  position: absolute;
+  top: -34px;
+  right: 0;
+  font-family: var(--font-heading);
+  font-size: 7rem;
+  line-height: 1;
+  color: color-mix(in srgb, var(--accent) 14%, transparent);
+  pointer-events: none;
+}
+.essence .label-tag { margin: 0 0 10px; color: var(--tech); font-size: .7rem; letter-spacing: .18em; }
+.essence h2 {
+  margin: 0 0 14px;
+  font-size: clamp(1.6rem, 3vw, 2.25rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -.035em;
+  color: var(--text);
+}
+.essence h2 em {
+  font-style: normal;
+  background: linear-gradient(90deg, var(--accent), var(--tech));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.essence-text { max-width: 580px; margin: 0 0 18px; font-size: 1rem; line-height: 1.7; color: var(--text-muted); }
+/* Cinco facetas: los roles reales de cada integrante, con su color. */
+.essence-facets { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.essence-facets li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px 5px 10px;
+  border: 1px solid color-mix(in srgb, var(--member-accent) 35%, var(--border));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--member-accent) 8%, var(--surface));
+  color: var(--text);
+  font-size: .78rem;
+  font-weight: 600;
+}
+.essence-facets li::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  transform: rotate(45deg); /* pequeño rombo: una faceta */
+  background: var(--member-accent);
+}
+
+@media (max-width: 700px) {
+  /* Más aire arriba: la sección no queda pegada al separador ni al header. */
+  .home-page .essence {
+    grid-template-columns: 80px minmax(0, 1fr);
+    align-items: start;
+    gap: 14px;
+    margin-block: 16px 24px;
+    padding: 44px 0 8px;
+  }
+  /* En mobile la columna es angosta: el aura se vuelve vertical para acompañar a la gema. */
+  .essence-aside { margin-top: 2px; aspect-ratio: 5 / 7; border-radius: 40px; }
+  .essence-gem { width: 88%; }
+  .essence-content { padding-left: 16px; }
+  .essence-content::before { top: -10px; right: 2px; font-size: 5rem; }
+  .essence h2 { font-size: 1.45rem; }
+  .essence-text { font-size: .95rem; }
+  .essence-facets li { font-size: .72rem; padding: 4px 10px 4px 8px; }
+}
+
+/* =====================================================================
+   BITÁCORA — Integración con el sistema de temas de guild.css
+   ===================================================================== */
+
+/* Stats: superficies como el resto de tarjetas */
+.log-stat {
+  background: var(--surface);
+  border-color: var(--border);
+  box-shadow: var(--shadow);
+  border-radius: 12px;
+}
+.log-stat-num  { color: var(--tech); }
+.log-stat-label { color: var(--text-muted); font-size: .7rem; letter-spacing: .04em; }
+.log-stat:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+
+/* Hero sin gema: 1 sola columna, centrado */
+.log-hero {
+  grid-template-columns: 1fr;
+  text-align: center;
+  gap: 16px;
+  padding-block: 56px 40px;
+}
+.log-hero .label-tag { margin-inline: auto; }
+.log-hero-lead {
+  max-width: 520px;
+  margin-inline: auto;
+  margin-bottom: 0;
+}
+.log-hero-gem { display: none; }
+
+
+/* Log-card: misma superficie que vine-card */
+.log-card {
+  background: var(--surface);
+  border-color: var(--entry-accent);
+  box-shadow: var(--shadow);
+  border-radius: 4px 16px 16px 4px;
+}
+.log-card::before { display: none; }
+.log-card:hover { transform: translateY(-2px) translateX(2px); box-shadow: var(--shadow); }
+.log-card .log-meta { font-size: .72rem; letter-spacing: .04em; color: var(--text-muted); }
+.log-card h2 { font-style: normal; font-weight: 600; color: var(--text); font-size: 1.3rem; }
+.log-card p  { font-style: normal; font-size: 1rem; color: var(--text-muted); }
+.log-card h3 { font-size: .72rem; letter-spacing: .04em; filter: none; color: var(--entry-accent); }
+
+/* Timeline con riel: cada entrada es una grilla [riel | tarjeta]. El diamante se
+   centra en el riel y la rama se ubica en el centro de ese mismo riel, así que
+   ambos comparten una sola medida (--rail) en todos los tamaños de pantalla. */
+.log-entries {
+  --rail: 64px;
+  --rail-gap: 14px;
+  --node: 46px;
+  --entry-gap: 28px;
+  --vine-w: 68px;
+  /* Verde salvia/oliva, inspirado en la enredadera de marianoa: tallo más oscuro, hojas más claras. */
+  --vine-stem: #5e7d52;
+  --vine-leaf: #86a672;
+  /* Tramo de enredadera (adaptado de la bitácora de marianoa): tallo sinuoso,
+     tallo secundario punteado que se entrelaza, ramitas alternadas y hojas.
+     Empieza y termina en el eje con tangente vertical para empalmar con el tramo siguiente.
+     Tallos y hojas van en máscaras separadas para poder darles tonos distintos. */
+  --vine-shape: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 400' preserveAspectRatio='none' fill='none' stroke='%23000' stroke-linecap='round'%3E%3Cstyle%3Epath%7Bvector-effect:non-scaling-stroke%7D%3C/style%3E%3Cpath d='M40 0C40 52 33 84 35 142C37 204 49 222 46 284C43 342 40 360 40 400' stroke-width='2.2'/%3E%3Cpath d='M40 12C55 72 29 118 50 190C64 252 31 298 45 358C47 380 41 394 40 400' stroke-width='1.2' stroke-dasharray='6 4' stroke-opacity='.5'/%3E%3Cpath d='M34.5 112C24 104 15 97 10 88' stroke-width='1.4' stroke-opacity='.75'/%3E%3Cpath d='M47.5 250C58 241 66 233 71 224' stroke-width='1.3' stroke-opacity='.7'/%3E%3Cpath d='M41.5 340C35 334 31 328 28 323' stroke-width='1.1' stroke-opacity='.6'/%3E%3C/svg%3E");
+  --vine-leaves: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 400' preserveAspectRatio='none' fill='%23000' stroke='none' stroke-linecap='round'%3E%3Cstyle%3Epath%7Bvector-effect:non-scaling-stroke%7D%3C/style%3E%3Cpath d='M10 88C4 87 1 81 1 73C7 75 10 81 10 88Z' fill-opacity='.8'/%3E%3Cpath d='M71 224C77 223 79 217 79 209C73 211 71 217 71 224Z' fill-opacity='.72'/%3E%3Cpath d='M28 323C24 322 22 318 22 312C26 313 28 318 28 323Z' fill-opacity='.64'/%3E%3Cpath d='M37 168C41 168 43 164 43 159C39 160 37 164 37 168Z' fill-opacity='.6'/%3E%3C/svg%3E");
+  gap: var(--entry-gap);
+}
+:root[data-theme="dark"] .log-entries { --vine-stem: #8aa87c; --vine-leaf: #a7c08f; }
+.log-entry {
+  display: grid;
+  grid-template-columns: var(--rail) minmax(0, 1fr);
+  column-gap: var(--rail-gap);
+  align-items: start;
+  -webkit-tap-highlight-color: transparent;
+}
+.log-gem-node {
+  z-index: 1;
+  justify-self: center;
+  width: var(--node);
+  height: var(--node);
+  margin-top: calc(var(--node) * .4);
+  transition: transform .2s cubic-bezier(.2, .8, .2, 1);
+}
+
+/* Rama viva: cada entrada dibuja el tramo que va del centro de su diamante al
+   centro del siguiente, así la enredadera siempre atraviesa los nodos. El SVG se
+   estira al alto de la entrada sin engrosar los trazos (non-scaling-stroke) y las
+   entradas pares lo espejan para que las ramitas alternen de lado. */
+.log-entry::before, .log-entry::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  left: calc(var(--rail) / 2);
+  top: calc(var(--node) * .9);
+  bottom: calc(-1 * (var(--entry-gap) + var(--node) * .9));
+  width: var(--vine-w);
+  translate: -50% 0;
+  background: var(--vine-stem);
+  -webkit-mask: var(--vine-shape) center / 100% 100% no-repeat;
+  mask: var(--vine-shape) center / 100% 100% no-repeat;
+  pointer-events: none;
+}
+.log-entry::after {
+  background: var(--vine-leaf);
+  -webkit-mask-image: var(--vine-leaves);
+  mask-image: var(--vine-leaves);
+}
+.log-entry:nth-child(even)::before, .log-entry:nth-child(even)::after { scale: -1 1; }
+/* Después de la última etapa la rama se apaga dentro de la propia entrada. */
+.log-entry:last-child::before, .log-entry:last-child::after { bottom: 0; }
+.log-entry:last-child::before { background: linear-gradient(to bottom, var(--vine-stem) 45%, transparent); }
+.log-entry:last-child::after { background: linear-gradient(to bottom, var(--vine-leaf) 45%, transparent); }
+
+@media (max-width: 768px) {
+  .log-entries { --rail: 52px; --rail-gap: 10px; --node: 38px; --vine-w: 56px; }
+}
+@media (max-width: 480px) {
+  .log-entries { --rail: 46px; --rail-gap: 8px; --node: 32px; --vine-w: 50px; }
+}
+
+/* Diamante: respuesta corta al pasar el cursor o tocar la entrada. */
+.log-gem-node::before {
+  box-shadow:
+    0 0 0 2.5px var(--surface),
+    0 0 0 4px var(--gem-border),
+    0 6px 14px var(--gem-shadow),
+    0 0 18px 3px var(--gem-glow);
+  transition: box-shadow .2s ease, filter .2s ease;
+}
+.log-entry.is-pressed .log-gem-node { transform: translateY(-2px) scale(1.04); }
+.log-entry.is-pressed .log-gem-node::before {
+  filter: brightness(1.05);
+  box-shadow:
+    0 0 0 2.5px var(--surface),
+    0 0 0 4px var(--gem-border),
+    0 9px 18px var(--gem-shadow),
+    0 0 24px 6px var(--gem-glow);
+}
+@media (hover: hover) {
+  .log-entry:hover .log-gem-node { transform: translateY(-2px) scale(1.04); }
+  .log-entry:hover .log-gem-node::before {
+    filter: brightness(1.05);
+    box-shadow:
+      0 0 0 2.5px var(--surface),
+      0 0 0 4px var(--gem-border),
+      0 9px 18px var(--gem-shadow),
+      0 0 24px 6px var(--gem-glow);
+  }
+}
+
+/* Cierre de la bitácora */
+.log-cta { --member-accent: var(--accent); padding-bottom: 80px; }
+.log-cta-inner {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: clamp(36px, 6vw, 56px) clamp(22px, 6vw, 60px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 0%, var(--accent-soft), transparent 70%),
+    var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+}
+/* Las cinco gemas de la timeline, reunidas sobre un mismo tallo. */
+.log-cta-gems {
+  position: relative;
+  display: flex;
+  gap: 18px;
+  padding: 6px 4px;
+}
+.log-cta-gems::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1.5px;
+  background: linear-gradient(to right, transparent, color-mix(in srgb, var(--tech) 62%, var(--accent)) 20%, color-mix(in srgb, var(--tech) 62%, var(--accent)) 80%, transparent);
+  opacity: .7;
+}
+.log-cta-gems i {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  rotate: 45deg;
+  border-radius: 2px 5px 2px 5px;
+  background: var(--gem-gradient);
+  box-shadow: 0 0 0 2px var(--surface), 0 0 0 3px var(--gem-border), 0 0 10px 2px var(--gem-glow);
+}
+.log-cta-eyebrow {
+  margin: 22px 0 10px;
+  font-family: var(--font-label);
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--tech);
+}
+.log-cta h2 {
+  margin: 0 0 14px;
+  font-family: var(--font-heading);
+  font-size: clamp(1.75rem, 4.4vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -.03em;
+  color: var(--text);
+}
+.log-cta-text {
+  max-width: 580px;
+  margin: 0 0 30px;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+/* Gema del hero */
+.log-gem-svg {
+  filter:
+    drop-shadow(0 8px 20px var(--glow))
+    drop-shadow(0 0 24px var(--wash));
+}
+
+:root[data-theme="dark"] .log-gem-svg {
+  filter:
+    drop-shadow(0 10px 24px rgba(107, 142, 107, .40))
+    drop-shadow(0 0 36px rgba(196, 160, 92, .28));
+}
+
+/* Reducción de movimiento: el diamante sólo cambia su brillo, sin moverse ni escalar. */
+@media (prefers-reduced-motion: reduce) {
+  .log-gem-svg { animation: none; }
+  .log-stat:hover, .log-card:hover { transform: none; }
+  .log-gem-node { transition: none; }
+  .log-entry:hover .log-gem-node, .log-entry.is-pressed .log-gem-node { transform: none; }
+}

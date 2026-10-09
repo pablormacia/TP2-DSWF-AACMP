@@ -1,0 +1,178 @@
+[
+  {
+    "id": 1,
+    "name": "React",
+    "category": "Desarrollo",
+    "description": "Interfaces construidas con componentes.",
+    "detail": "Usamos props para compartir tarjetas y estado para controlar interacciones.",
+    "url": "https://react.dev/"
+  },
+  {
+    "id": 2,
+    "name": "React Router",
+    "category": "Desarrollo",
+    "description": "Navegación dentro de la aplicación.",
+    "detail": "Organiza portada, perfiles y secciones en rutas con un layout compartido.",
+    "url": "https://reactrouter.com/"
+  },
+  {
+    "id": 3,
+    "name": "Vite",
+    "category": "Desarrollo",
+    "description": "Servidor local y compilación del proyecto.",
+    "detail": "Permite desarrollar con recarga automática y generar la carpeta dist.",
+    "url": "https://vite.dev/"
+  },
+  {
+    "id": 4,
+    "name": "JavaScript",
+    "category": "Desarrollo",
+    "description": "El lenguaje de las interacciones.",
+    "detail": "Arrays, objetos y funciones sostienen el catálogo y sus filtros.",
+    "url": "https://developer.mozilla.org/es/docs/Web/JavaScript"
+  },
+  {
+    "id": 5,
+    "name": "HTML semántico",
+    "category": "Accesibilidad",
+    "description": "Estructuras que explican su contenido.",
+    "detail": "Main, nav, article y encabezados ayudan a recorrer la interfaz.",
+    "url": "https://developer.mozilla.org/es/docs/Web/HTML"
+  },
+  {
+    "id": 6,
+    "name": "CSS Grid",
+    "category": "Diseño",
+    "description": "Grillas flexibles para tarjetas.",
+    "detail": "Ajusta la cantidad de columnas al espacio disponible.",
+    "url": "https://developer.mozilla.org/es/docs/Web/CSS/CSS_grid_layout"
+  },
+  {
+    "id": 7,
+    "name": "Flexbox",
+    "category": "Diseño",
+    "description": "Alineación de controles y navegación.",
+    "detail": "Distribuye elementos y permite que los grupos se adapten al ancho.",
+    "url": "https://developer.mozilla.org/es/docs/Web/CSS/CSS_flexible_box_layout"
+  },
+  {
+    "id": 8,
+    "name": "Variables CSS",
+    "category": "Diseño",
+    "description": "Una paleta compartida.",
+    "detail": "Los colores de papel, tinta y gemas mantienen una identidad coherente.",
+    "url": "https://developer.mozilla.org/es/docs/Web/CSS/Using_CSS_custom_properties"
+  },
+  {
+    "id": 9,
+    "name": "Space Grotesk",
+    "category": "Diseño",
+    "description": "Tipografía de nuestros títulos.",
+    "detail": "Su geometría conecta la identidad del equipo con el código.",
+    "url": "https://fonts.google.com/specimen/Space+Grotesk"
+  },
+  {
+    "id": 10,
+    "name": "Manrope",
+    "category": "Diseño",
+    "description": "Tipografía del contenido.",
+    "detail": "La usamos para textos, etiquetas y navegación.",
+    "url": "https://fonts.google.com/specimen/Manrope"
+  },
+  {
+    "id": 11,
+    "name": "WebP",
+    "category": "Diseño",
+    "description": "Avatares optimizados para la web.",
+    "detail": "El proyecto conserva imágenes en varios tamaños y variantes de tema.",
+    "url": "https://developers.google.com/speed/webp"
+  },
+  {
+    "id": 12,
+    "name": "Git",
+    "category": "Colaboración",
+    "description": "Historial y versiones del código.",
+    "detail": "Permite trabajar en ramas y revisar cambios antes de integrarlos.",
+    "url": "https://git-scm.com/"
+  },
+  {
+    "id": 13,
+    "name": "GitHub",
+    "category": "Colaboración",
+    "description": "Repositorio y revisión compartida.",
+    "detail": "Centraliza el código y los accesos de los integrantes del equipo.",
+    "url": "https://github.com/"
+  },
+  {
+    "id": 14,
+    "name": "Pull requests",
+    "category": "Colaboración",
+    "description": "Cambios que se pueden revisar.",
+    "detail": "Facilitan explicar una modificación y recibir observaciones del equipo.",
+    "url": "https://docs.github.com/es/pull-requests"
+  },
+  {
+    "id": 15,
+    "name": "Markdown",
+    "category": "Colaboración",
+    "description": "Documentación simple en el README.",
+    "detail": "Encabezados, enlaces y tablas organizan la presentación del trabajo.",
+    "url": "https://www.markdownguide.org/"
+  },
+  {
+    "id": 16,
+    "name": "Vercel",
+    "category": "Desarrollo",
+    "description": "Publicación de la aplicación.",
+    "detail": "El rewrite permite recargar las rutas de React Router.",
+    "url": "https://vercel.com/"
+  },
+  {
+    "id": 17,
+    "name": "Fetch API",
+    "category": "Desarrollo",
+    "description": "Consultas HTTP desde el navegador.",
+    "detail": "La sección de exploración procesa carga, respuestas y errores de una API pública.",
+    "url": "https://developer.mozilla.org/es/docs/Web/API/Fetch_API"
+  },
+  {
+    "id": 18,
+    "name": "JSON",
+    "category": "Desarrollo",
+    "description": "Datos separados de la presentación.",
+    "detail": "Miembros, recursos y registros de bitácora se almacenan como datos locales.",
+    "url": "https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/JSON"
+  },
+  {
+    "id": 19,
+    "name": "Navegación por teclado",
+    "category": "Accesibilidad",
+    "description": "Controles utilizables sin mouse.",
+    "detail": "Botones, enlaces y desplegables nativos conservan foco y activación por teclado.",
+    "url": "https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html"
+  },
+  {
+    "id": 20,
+    "name": "Movimiento reducido",
+    "category": "Accesibilidad",
+    "description": "Animaciones que respetan preferencias.",
+    "detail": "La consulta prefers-reduced-motion desactiva movimientos innecesarios.",
+    "url": "https://developer.mozilla.org/es/docs/Web/CSS/@media/prefers-reduced-motion"
+  },
+  {
+    "id": 21,
+    "name": "Etiquetas accesibles",
+    "category": "Accesibilidad",
+    "description": "Controles con nombres comprensibles.",
+    "detail": "La búsqueda y el selector de categoría tienen etiquetas visibles.",
+    "url": "https://www.w3.org/WAI/tutorials/forms/labels/"
+  },
+  {
+    "id": 22,
+    "name": "Diseño responsive",
+    "category": "Diseño",
+    "description": "Una experiencia para distintos tamaños.",
+    "detail": "La sidebar se transforma en un panel y las tarjetas pasan a una columna en móvil.",
+    "url": "https://developer.mozilla.org/es/docs/Learn_web_development/Core/CSS_layout/Responsive_Design"
+  }
+]

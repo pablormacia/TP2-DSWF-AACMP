@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" width="600" height="600"
+     role="img" aria-label="Faceta de Fernando Palearuzza en la gema del equipo">
+  <title>La faceta de Fernando Palearuzza</title>
+  <!-- Marcador de posición hasta que llegue la imagen real: la gema del
+       equipo con la cara de esta persona encendida y el resto apagado. -->
+  <rect width="180" height="180" fill="#0d1420"/>
+  <g transform="translate(90,94) scale(1.25) translate(-90,-108)">
+    <polygon points="90,42 34,88 90,78" fill="#D4A8A0" opacity=".16"/>
+    <polygon points="90,42 146,88 90,78" fill="#A8C4D4" opacity=".16"/>
+    <polygon points="34,88 54,148 90,78" fill="#C4A05C" opacity=".16"/>
+    <polygon points="146,88 126,148 90,78" fill="#87A878" opacity=".16"/>
+    <polygon points="54,148 90,174 126,148 90,78" fill="#C4B8D8" opacity="1"/>
+  </g>
+</svg>

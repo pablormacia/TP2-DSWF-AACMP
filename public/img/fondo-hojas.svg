@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 400">
+  <!-- Rama decorativa del fondo Light: formas simples y translúcidas, sin animación. -->
+  <defs>
+    <linearGradient id="acuarela" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#72b9b1"/><stop offset=".55" stop-color="#a9d2c6"/><stop offset="1" stop-color="#a5b8df"/></linearGradient>
+    <g id="hoja"><path d="M0 0 C12 -4 19 -21 33 -20L40 -23 47 -21Q66 -19 87 -5C73 1 71 14 58 17L49 20 43 18Q16 20 0 0Z"/><path d="M3 0Q37 -2 80 -5M23 -1 31 -16M40 -2 49 -18M39 -2 49 14M57 -3 67 8" fill="none" stroke="#528f9b" stroke-opacity=".38" stroke-width=".6"/></g>
+  </defs>
+  <path d="M28 396 C52 300 78 214 132 120 C158 76 184 44 214 14" fill="none" stroke="#5aa9a0" stroke-opacity=".32" stroke-width="2" stroke-linecap="round"/>
+  <g fill="url(#acuarela)">
+    <use href="#hoja" transform="translate(44 330) rotate(-120) scale(.9)" fill-opacity=".20"/>
+    <use href="#hoja" transform="translate(56 300) rotate(-20)" fill-opacity=".26"/>
+    <use href="#hoja" transform="translate(78 238) rotate(-135) scale(.95)" fill-opacity=".18"/>
+    <use href="#hoja" transform="translate(96 206) rotate(-30) scale(.85)" fill-opacity=".24"/>
+    <use href="#hoja" transform="translate(126 132) rotate(-140) scale(.8)" fill-opacity=".16"/>
+    <use href="#hoja" transform="translate(146 100) rotate(-38) scale(.75)" fill-opacity=".22"/>
+    <use href="#hoja" transform="translate(186 50) rotate(-150) scale(.6)" fill-opacity=".16"/>
+  </g>
+  <g fill="#8fb8e8">
+    <use href="#hoja" transform="translate(66 270) rotate(-80) scale(.7)" fill-opacity=".16"/>
+    <use href="#hoja" transform="translate(112 168) rotate(-95) scale(.6)" fill-opacity=".14"/>
+  </g>
+  <!-- Brotes secundarios estáticos, fuera de las zonas de lectura. -->
+  <path d="M46 329Q13 288 9 241M100 203Q151 193 185 161" fill="none" stroke="#83aaa5" stroke-opacity=".18"/>
+  <g fill="url(#acuarela)" opacity=".18">
+    <use href="#hoja" transform="translate(28 295) rotate(-155) scale(.5)"/>
+    <use href="#hoja" transform="translate(16 272) rotate(-65) scale(.5)"/>
+    <use href="#hoja" transform="translate(132 192) rotate(-70) scale(.6)"/>
+    <use href="#hoja" transform="translate(155 181) rotate(3) scale(.45)"/>
+  </g>
+</svg>
