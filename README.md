@@ -11,6 +11,11 @@ AACMP presenta a cinco integrantes que combinan análisis, desarrollo, diseño y
 - [Uso de IA](#uso-de-ia)
 - [Estado de la entrega](#estado-de-la-entrega)
 
+## Enlaces del proyecto
+
+- [Deploy en Vercel](https://tp2-dswf.vercel.app/)
+- [Repositorio TP2](https://github.com/pablormacia/TP2-DSWF-AACMP)
+
 ## El equipo
 
 | Integrante           | GitHub                                                      | Aporte presentado en su perfil |
@@ -86,11 +91,10 @@ El equipo debe revisar y apropiarse de los cambios. No se atribuye este uso a un
 
 Implementadas las funcionalidades de los criterios 4 a 14. La documentación identifica los cinco integrantes y el uso confirmado de IA (criterio 15). El detalle por integrante del nivel “Propone” está pendiente de confirmación.
 
-**El proyecto todavía no está listo para entregar:** falta incorporar y comprobar el enlace real al deploy de Vercel, crear o vincular el repositorio público independiente de TP2 y verificar que todos los integrantes tengan sus invitaciones aceptadas. En esta carpeta no había un repositorio Git inicializado al comenzar la implementación. Los criterios 1 a 3 no se consideran completos hasta verificar esos datos.
+El deploy de Vercel y el repositorio independiente de TP2 están enlazados arriba. Antes de entregar, queda comprobar el acceso público, verificar que todos los integrantes tengan sus invitaciones aceptadas y completar las confirmaciones del grupo.
 
 Antes de entregar:
 
-- Agregar aquí el enlace funcional de Vercel y el del repositorio TP2.
 - Abrir ambos enlaces sin iniciar sesión.
 - Confirmar acceso aceptado de los cinco integrantes.
 - Recorrer los perfiles, filtros, API, árbol y bitácora en el deploy.
