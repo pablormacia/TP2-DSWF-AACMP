@@ -1,4 +1,7 @@
-﻿.tp2-sidebar {
+
+/* Sidebar — identidad gem: borde con gradiente violeta→cian,
+   encabezado con la marca del proyecto bien legible. */
+.tp2-sidebar {
   position: fixed;
   inset: 0 auto 0 0;
   width: min(320px, 88vw);
@@ -6,100 +9,181 @@
   padding: 28px;
   background: var(--surface);
   border-right: 1px solid var(--border);
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow), 4px 0 24px -8px color-mix(in srgb, var(--accent) 12%, transparent);
   display: flex;
   flex-direction: column;
   transform: translateX(-105%);
   visibility: hidden;
   transition:
-    transform 0.25s ease,
-    visibility 0.25s;
+    transform 0.3s cubic-bezier(.4, 0, .2, 1),
+    visibility 0.3s;
 }
 .tp2-sidebar.is-open {
   transform: translateX(0);
   visibility: visible;
 }
+
+/* Sidebar — botón cerrar con hover de acento */
 .tp2-close {
   align-self: flex-end;
-  padding: 8px;
+  padding: 8px 10px;
   color: var(--text-muted);
   font-size: 0.8rem;
+  border-radius: 8px;
+  transition: background-color .2s ease, color .2s ease;
 }
+.tp2-close:hover {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+/* Sidebar — marca del proyecto con tipografía heading y línea decorativa cian */
 .tp2-brand {
   font-family: var(--font-heading);
   font-weight: 700;
-  font-size: 1.7rem;
-  margin-top: 25px;
+  font-size: 1.5rem;
+  margin-top: 22px;
   color: var(--text);
+  letter-spacing: -0.03em;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.tp2-brand::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--tech));
+  border-radius: 2px;
 }
 .tp2-brand small {
   display: block;
   font-family: var(--font-body);
-  font-weight: 400;
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  margin-top: 8px;
-}
-.tp2-nav-label {
-  font-size: 0.65rem;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  margin: 40px 0 16px;
+  font-weight: 500;
+  font-size: 0.72rem;
   color: var(--tech);
+  letter-spacing: 0.04em;
+  margin-top: 6px;
 }
+
+/* Sidebar — etiqueta de sección con color tech (cian), coherente con guild */
+.tp2-nav-label {
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  margin: 28px 0 12px;
+  color: var(--tech);
+  font-weight: 700;
+}
+
+/* Sidebar — navegación con transiciones suaves y acento coherente */
 .tp2-sidebar nav {
   display: grid;
-  gap: 9px;
+  gap: 4px;
 }
 .tp2-sidebar nav a {
   display: flex;
   justify-content: space-between;
-  padding: 13px;
+  align-items: center;
+  padding: 11px 14px;
   border-radius: 10px;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+  font-weight: 500;
   color: var(--text-muted);
+  transition: background-color .2s ease, color .2s ease;
+}
+.tp2-sidebar nav a .nav-arrow {
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity .2s ease, transform .2s ease;
+  color: var(--accent);
+  font-size: 0.9rem;
 }
 .tp2-sidebar nav a.active,
 .tp2-sidebar nav a:hover {
   background: var(--accent-soft);
   color: var(--accent);
 }
+.tp2-sidebar nav a.active .nav-arrow,
+.tp2-sidebar nav a:hover .nav-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Sidebar — pie con indicador de gema (mini cristal decorativo) */
 .tp2-sidebar-foot {
   margin-top: auto;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: var(--text-muted);
-  padding-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
+.tp2-sidebar-foot::before {
+  content: '◆';
+  font-size: 0.7rem;
+  color: var(--accent);
+  opacity: 0.7;
+}
+
+/* Sidebar — backdrop del sidebar */
 .tp2-backdrop {
   position: fixed;
   inset: 0;
   background: rgb(3 7 18 / 48%);
   z-index: 140;
   border: 0;
+  backdrop-filter: blur(2px);
 }
+
+/* Sidebar — botón de secciones — estilo coherente con el switcher de tema,
+       posicionado como hamburguer en el header */
 .tp2-sections-toggle {
   position: fixed;
-  right: 20px;
-  bottom: 20px;
+  left: 16px;
+  right: auto;
+  top: 14px;
+  bottom: auto;
+  width: 44px;
+  height: 44px;
   z-index: 130;
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 16px;
+  justify-content: center;
+  gap: 0;
+  padding: 0;
   border: 1px solid var(--border);
-  border-radius: 999px;
+  border-radius: 10px;
   background: var(--surface);
-  color: var(--accent);
+  color: var(--text-muted);
   box-shadow: var(--shadow);
-  font-size: 0.8rem;
+  font-size: 1.2rem;
   font-weight: 700;
+  transition: background-color .2s ease, border-color .2s ease, color .2s ease, box-shadow .2s ease;
 }
 .tp2-sections-toggle:hover {
   background: var(--accent-soft);
+  color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
 }
-html:has(.tp2-sidebar.is-open) {
-  overflow: hidden;
+.tp2-sections-toggle span {
+  display: none;
 }
+
+/*  Header — espacio reservado para el botón de secciones */
+.site-header {
+  padding-left: max(76px, 7vw);
+}
+.site-header .menu-button {
+  display: none;
+}
+
+/* Enlace de salto al contenido (accesibilidad) */
 .tp2-skip {
   position: fixed;
   top: 8px;
@@ -107,97 +191,168 @@ html:has(.tp2-sidebar.is-open) {
   transform: translateY(-200%);
   z-index: 200;
   background: var(--surface);
-  padding: 12px;
+  padding: 10px 16px;
   color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
 }
 .tp2-skip:focus {
   transform: none;
 }
+
+/* Páginas internas — layout base con fondo sutil de identidad gem */
 .tp2-page {
   padding-top: 64px;
   padding-bottom: 80px;
   min-height: calc(100vh - 200px);
   color: var(--text);
 }
+
+/*  Páginas internas — h1 con gradiente violeta→cian en el texto,
+        tipografía heading consistente con el resto del proyecto */
 .tp2-page h1 {
-  font: 600 clamp(2rem, 4vw, 3.3rem)/1.12 var(--font-heading);
-  letter-spacing: -0.04em;
-  margin: 16px 0 24px;
-  max-width: 900px;
+  font: 700 clamp(2rem, 4vw, 3rem)/1.1 var(--font-heading);
+  letter-spacing: -0.045em;
+  margin: 12px 0 20px;
+  max-width: 860px;
+  color: var(--text);
 }
+.tp2-page h1 em {
+  font-style: normal;
+  background: linear-gradient(90deg, var(--accent), var(--tech));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Páginas internas — h2 coherente con la jerarquía del proyecto */
 .tp2-page h2 {
-  font: 600 1.35rem/1.25 var(--font-heading);
-  margin: 12px 0 16px;
+  font: 600 1.2rem/1.3 var(--font-heading);
+  letter-spacing: -0.025em;
+  margin: 10px 0 12px;
+  color: var(--text);
 }
+
+/* Eyebrow — etiqueta de sección en color tech (cian) con la misma
+        tipografía y espaciado que el resto del proyecto */
 .tp2-page .eyebrow {
-  font-size: 0.7rem;
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
   color: var(--tech);
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.18em;
   font-weight: 700;
+  margin: 0 0 4px;
 }
+
+/* Lead — texto descriptivo con tamaño y color muted coherentes */
 .tp2-page .lead {
-  font-size: 1.05rem;
+  font-size: 1rem;
   color: var(--text-muted);
-  max-width: 770px;
-  line-height: 1.7;
+  max-width: 680px;
+  line-height: 1.75;
+  margin: 0 0 24px;
 }
+
+/* Muted — texto secundario */
 .tp2-page .muted {
   color: var(--text-muted);
-  font-size: 0.9rem;
+  font-size: 0.875rem;
 }
+
+/* Botón estándar — estilos coherentes con guild.css: bordes redondeados,
+        acento del proyecto, transición suave */
 .tp2-page .button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 44px;
-  padding: 10px 18px;
-  border: 1px solid var(--border);
+  gap: 8px;
+  min-height: 42px;
+  padding: 9px 18px;
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--border));
   border-radius: 10px;
   background: var(--surface);
   color: var(--accent);
+  font-family: var(--font-body);
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
+  transition: background-color .2s ease, border-color .2s ease, box-shadow .2s ease, transform .2s ease;
 }
 .tp2-page .button:hover {
   background: var(--accent-soft);
+  border-color: var(--accent);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px -8px color-mix(in srgb, var(--accent) 50%, transparent);
 }
 .tp2-page .button:disabled {
-  opacity: 0.55;
+  opacity: 0.5;
   cursor: wait;
+  transform: none;
 }
+
+/* Enlace de texto — color acento con subrayado animado */
 .tp2-page .text-link {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   color: var(--accent);
   font-weight: 600;
-  font-size: 0.85rem;
-  padding: 8px 0;
+  font-size: 0.875rem;
+  padding: 6px 0;
+  position: relative;
+  transition: color .2s ease;
 }
+.tp2-page .text-link::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  right: 100%;
+  height: 1px;
+  background: var(--accent);
+  border-radius: 1px;
+  transition: right .3s ease;
+}
+.tp2-page .text-link:hover::after {
+  right: 0;
+}
+
+/* Section heading — cabecera de sección con separador y espaciado consistente */
 .tp2-page .section-heading {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
   flex-wrap: wrap;
-  margin: 28px 0;
+  margin: 32px 0 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
 }
+
+/* Filtros — panel con fondo suave y borde coherente con las tarjetas */
 .tp2-page .filters {
   display: flex;
   align-items: end;
   flex-wrap: wrap;
-  gap: 18px;
+  gap: 16px;
   background: var(--surface-soft);
   border: 1px solid var(--border);
-  padding: 24px;
+  padding: 20px;
   border-radius: 14px;
-  margin: 32px 0 20px;
+  margin: 0 0 20px;
 }
 .tp2-page .filters label {
   display: grid;
-  gap: 8px;
-  font-size: 0.8rem;
-  font-weight: 600;
+  gap: 7px;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
   flex: 1;
   min-width: 170px;
 }
@@ -208,213 +363,284 @@ html:has(.tp2-sidebar.is-open) {
 .tp2-page .filters select {
   font: inherit;
   width: 100%;
-  min-height: 46px;
+  min-height: 42px;
   border: 1px solid var(--border);
   border-radius: 8px;
   background: var(--surface);
   color: var(--text);
-  padding: 10px 12px;
+  padding: 9px 12px;
+  transition: border-color .2s ease, box-shadow .2s ease;
+  font-size: 0.875rem;
+}
+.tp2-page .filters input:focus,
+.tp2-page .filters select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent);
 }
 .tp2-page .filters p {
   margin: 0;
-  padding: 10px;
+  padding: 8px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
 }
+
+/* Grid de recursos — layout responsivo */
 .tp2-page .resource-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 18px;
 }
+
+/*Tarjetas de recurso — identidad gem: borde con acento sutil,
+        hover con elevación y brillo del color tech */
 .tp2-page .resource-card {
   border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 26px;
+  border-radius: 14px;
+  padding: 22px;
   background: var(--surface);
   box-shadow: var(--shadow);
   overflow-wrap: anywhere;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  position: relative;
+}
+.tp2-page .resource-card::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 20px;
+  right: 20px;
+  height: 2px;
+  border-radius: 0 0 2px 2px;
+  background: linear-gradient(90deg, transparent, var(--tech), transparent);
+  opacity: 0;
+  transition: opacity .25s ease;
+}
+.tp2-page .resource-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px -14px color-mix(in srgb, var(--tech) 40%, transparent), var(--shadow);
+  border-color: color-mix(in srgb, var(--tech) 30%, var(--border));
+}
+.tp2-page .resource-card:hover::before {
+  opacity: 1;
 }
 .tp2-page .resource-card p {
   font-size: 0.9rem;
+  color: var(--text-muted);
+  margin: 8px 0 12px;
+  line-height: 1.65;
+}
+.tp2-page .resource-card h2 {
+  margin: 4px 0 0;
+  font-size: 1.05rem;
+  letter-spacing: -0.02em;
+  color: var(--text);
 }
 .tp2-page .resource-card summary {
   font-size: 0.8rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--accent);
   cursor: pointer;
+  padding: 4px 0;
+  transition: color .2s ease;
+}
+.tp2-page .resource-card summary:hover {
+  color: var(--tech);
 }
 .tp2-page .resource-card details {
   border-top: 1px solid var(--border);
   padding-top: 14px;
+  margin-top: 12px;
 }
 .tp2-page .resource-card details p {
-  margin-top: 16px;
+  margin-top: 10px;
 }
+
+/* Estado vacío / error — panel con borde y fondo suave */
 .tp2-page .empty {
   background: var(--surface-soft);
   border: 1px solid var(--border);
-  padding: 35px;
+  padding: 32px;
   border-radius: 14px;
-  margin-top: 28px;
+  margin-top: 20px;
+  text-align: center;
 }
+.tp2-page .empty h2 {
+  font-size: 1.1rem;
+  margin: 0 0 8px;
+  color: var(--text);
+}
+.tp2-page .empty p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin: 0 0 16px;
+}
+
+/* Árbol de componentes — fuente mono con fondo de superficie,
+        resumen con color acento */
 .tp2-page .component-tree {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 14px;
-  padding: 25px;
-  margin-top: 32px;
+  padding: 22px;
+  margin-top: 24px;
   overflow: auto;
-  font-family: ui-monospace, monospace;
-  font-size: 0.9rem;
+  font-family: ui-monospace, 'Cascadia Code', 'Fira Code', monospace;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  box-shadow: var(--shadow);
 }
 .tp2-page .component-tree ul {
   list-style: none;
   padding-left: 22px;
-  border-left: 1px solid var(--border);
+  border-left: 1px solid color-mix(in srgb, var(--accent) 25%, var(--border));
+  margin: 4px 0;
 }
 .tp2-page .component-tree > ul {
   padding-left: 0;
   border: 0;
 }
 .tp2-page .component-tree li {
-  padding: 7px 0;
+  padding: 5px 0;
 }
 .tp2-page .component-tree summary {
   color: var(--accent);
-  padding: 5px;
+  padding: 4px 6px;
   cursor: pointer;
+  border-radius: 6px;
+  transition: background-color .2s ease;
+}
+.tp2-page .component-tree summary:hover {
+  background: var(--accent-soft);
 }
 .tp2-page .tree-leaf {
   display: inline-block;
-  padding: 5px;
+  padding: 3px 6px;
+  color: var(--text-muted);
+  border-radius: 4px;
+  transition: color .2s ease;
 }
+.tp2-page .component-tree li:hover > .tree-leaf {
+  color: var(--text);
+}
+
+/* Bitácora — lista de entradas con animación reveal sutil */
 .tp2-page .log-list {
   display: grid;
-  gap: 18px;
-  margin-top: 30px;
+  gap: 16px;
+  margin-top: 24px;
 }
+
+/*Entrada de bitácora — tarjeta con borde izquierdo gem */
 .tp2-page .log-entry {
   border: 1px solid var(--border);
   border-radius: 14px;
   background: var(--surface);
-  padding: 22px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  border-left: 3px solid var(--accent);
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.tp2-page .log-entry:hover {
+  border-left-color: var(--tech);
+  box-shadow: 0 8px 24px -12px color-mix(in srgb, var(--accent) 30%, transparent);
 }
 .tp2-page .log-entry summary {
   display: flex;
   align-items: center;
-  gap: 22px;
+  gap: 18px;
   font-family: var(--font-heading);
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
   list-style: none;
   cursor: pointer;
+  letter-spacing: -0.025em;
 }
 .tp2-page .log-entry summary::after {
   content: "+";
   margin-left: auto;
   color: var(--accent);
+  font-size: 1.25rem;
+  font-weight: 400;
+  transition: transform .2s ease;
 }
 .tp2-page .log-entry[open] summary::after {
   content: "−";
 }
 .tp2-page .log-entry small {
   display: block;
-  font: 600 0.68rem var(--font-body);
+  font: 700 0.65rem var(--font-body);
   letter-spacing: 0.12em;
   color: var(--text-muted);
-  margin-bottom: 6px;
+  text-transform: uppercase;
+  margin-bottom: 5px;
 }
 .tp2-page .log-number {
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: var(--accent);
   background: var(--accent-soft);
-  padding: 12px;
+  padding: 10px 12px;
   border-radius: 8px;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  flex-shrink: 0;
 }
 .tp2-page .log-entry > div {
-  padding: 22px 0 0 70px;
+  padding: 18px 0 0 64px;
   color: var(--text-muted);
-  font-size: 0.95rem;
+  font-size: 0.925rem;
+  line-height: 1.7;
 }
+
+/* Focus visible — coherente con guild.css */
 .tp2-page :focus-visible,
 .tp2-sidebar :focus-visible,
 .tp2-sections-toggle:focus-visible {
   outline: 3px solid var(--focus);
   outline-offset: 4px;
+  border-radius: 6px;
 }
-@media (max-width: 700px) {
-  .tp2-sections-toggle {
-    right: 12px;
-    bottom: 12px;
-    padding: 10px 14px;
-  }
-  .tp2-sections-toggle span {
-    font-size: 0.7rem;
-  }
-  .tp2-page {
-    padding-top: 35px;
-    padding-bottom: 60px;
-  }
-  .tp2-page .resource-grid {
-    grid-template-columns: 1fr;
-  }
-  .tp2-page .filters {
-    padding: 18px;
-  }
-  .tp2-page .filters label {
-    min-width: 100%;
-  }
-  .tp2-page .filters .button {
-    width: 100%;
-  }
-  .tp2-page .component-tree {
-    padding: 14px;
-    font-size: 0.75rem;
-  }
-  .tp2-page .component-tree ul {
-    padding-left: 12px;
-  }
-  .tp2-page .log-entry {
-    padding: 18px;
-  }
-  .tp2-page .log-entry summary {
-    font-size: 1rem;
-    gap: 12px;
-  }
-  .tp2-page .log-entry > div {
-    padding: 18px 0 0;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .tp2-sidebar {
-    transition: none;
-  }
-}
+
+/* Filtro de bitácora — mismo estilo que los filtros de recursos */
 .tp2-log-filter {
   display: flex;
   align-items: center;
-  gap: 24px;
-  padding: 18px 24px;
-  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
   border: 1px solid var(--border);
   border-radius: 14px;
-  background: var(--surface);
-  color: var(--text-muted);
+  background: var(--surface-soft);
   font-size: 0.85rem;
 }
 .tp2-log-filter label {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+  color: var(--text-muted);
+  font-weight: 600;
 }
 .tp2-log-filter select {
   font: inherit;
-  padding: 8px 12px;
+  padding: 7px 12px;
   border: 1px solid var(--border);
   border-radius: 8px;
   background: var(--surface);
   color: var(--text);
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.tp2-log-filter select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent);
 }
 .tp2-log-filter p {
   margin: 0;
+  color: var(--text-muted);
 }
+
+/* Tarjeta de bitácora — summary sin marcador nativo */
 .log-card > summary {
   list-style: none;
   cursor: pointer;
@@ -427,7 +653,7 @@ html:has(.tp2-sidebar.is-open) {
   content: "−";
   position: absolute;
   right: 0;
-  top: 28px;
+  top: 24px;
   color: var(--accent);
   font-size: 1.2rem;
 }
@@ -437,32 +663,107 @@ html:has(.tp2-sidebar.is-open) {
 .log-card > summary h2 {
   padding-right: 20px;
 }
-.tp2-sections-toggle {
-  left: 16px;
-  right: auto;
-  top: 14px;
-  bottom: auto;
-  width: 44px;
-  height: 44px;
-  justify-content: center;
-  padding: 0;
-  font-size: 1.25rem;
+
+/* Overflow del html cuando el sidebar está abierto */
+html:has(.tp2-sidebar.is-open) {
+  overflow: hidden;
 }
-.tp2-sections-toggle span {
-  display: none;
+
+/* Responsive mobile — páginas internas */
+@media (max-width: 700px) {
+  .tp2-page {
+    padding-top: 32px;
+    padding-bottom: 60px;
+  }
+  .tp2-page .resource-grid {
+    grid-template-columns: 1fr;
+  }
+  .tp2-page .filters {
+    padding: 16px;
+    gap: 12px;
+  }
+  .tp2-page .filters label {
+    min-width: 100%;
+  }
+  .tp2-page .filters .button {
+    width: 100%;
+    justify-content: center;
+  }
+  .tp2-page .component-tree {
+    padding: 14px;
+    font-size: 0.78rem;
+  }
+  .tp2-page .component-tree ul {
+    padding-left: 14px;
+  }
+  .tp2-page .log-entry {
+    padding: 16px;
+  }
+  .tp2-page .log-entry summary {
+    font-size: 1rem;
+    gap: 12px;
+  }
+  .tp2-page .log-entry > div {
+    padding: 16px 0 0;
+  }
+  .tp2-log-filter {
+    padding: 14px 16px;
+  }
 }
-/* Reserva espacio para el acceso lateral junto a la marca. */
-.site-header {
-  padding-left: max(76px, 7vw);
+
+/* Responsive mobile — sections toggle */
+@media (max-width: 700px) {
+  .tp2-sections-toggle {
+    width: 40px;
+    height: 40px;
+    top: 16px;
+    left: 14px;
+  }
 }
-.site-header .menu-button {
-  display: none;
-}
-.tp2-sidebar.is-open {
-  transition: transform 0.25s ease;
-}
+
+/* Reduced motion — animaciones */
 @media (prefers-reduced-motion: reduce) {
+  .tp2-sidebar {
+    transition: none;
+  }
   .tp2-sidebar.is-open {
     transition: none;
   }
+  .tp2-page .resource-card,
+  .tp2-page .button,
+  .tp2-page .log-entry {
+    transition: none;
+  }
+}
+
+/*Modo oscuro — ajustes específicos para elementos del TP2 */
+:root[data-theme="dark"] .tp2-page .resource-card {
+  background: var(--surface);
+  border-color: var(--border);
+}
+:root[data-theme="dark"] .tp2-page .filters input,
+:root[data-theme="dark"] .tp2-page .filters select,
+:root[data-theme="dark"] .tp2-log-filter select {
+  background: var(--surface);
+  border-color: var(--border);
+  color: var(--text);
+}
+:root[data-theme="dark"] .tp2-sidebar {
+  box-shadow: var(--shadow), 4px 0 32px -8px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+:root[data-theme="dark"] .tp2-page .component-tree {
+  background: var(--surface);
+}
+
+/*s Animación page-enter — coherente con guild.css (main ya la tiene,
+        pero la reforzamos para el contenido de las páginas internas) */
+.tp2-page {
+  animation: tp2-content-enter .3s ease-out;
+}
+@keyframes tp2-content-enter {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tp2-page { animation: none; }
 }

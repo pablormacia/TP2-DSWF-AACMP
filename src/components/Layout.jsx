@@ -1,4 +1,4 @@
-﻿import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import Footer from "./Footer.jsx";
 
@@ -149,7 +149,7 @@ export function Sidebar({ open, onClose }) {
         ].map(([to, label]) => (
           <NavLink key={to} end={to === "/"} to={to} onClick={onClose}>
             {label}
-            <span aria-hidden="true">→</span>
+            <span className="nav-arrow" aria-hidden="true">→</span>
           </NavLink>
         ))}
       </nav>
