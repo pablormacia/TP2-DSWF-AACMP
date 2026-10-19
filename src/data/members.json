@@ -3,10 +3,12 @@
     "id": "juan",
     "name": "Juan Manuel Albareda",
     "role": "Análisis & calidad",
+    "alias": "mago",
     "meta": "Buenos Aires, Argentina • 47 años",
     "bio": "Technical business analyst: contador público que entiende el negocio y además escribe la capa que lo implementa. Trabaja en costos, procesos y auditoría interna en PyMEs y asociaciones civiles, y cursa el anteúltimo cuatrimestre de la Tecnicatura. Conoce el problema de negocio desde adentro: eso es lo que lleva al código.",
     "github": "https://github.com/juanmanuelalbareda",
     "skills": ["JavaScript", "PHP/Python", "SQL/MariaDB", "Análisis funcional"],
+    "skillHues": [60, 220, 120, 300],
     "favorites": [
       {
         "title": "Películas Favoritas",
@@ -28,10 +30,12 @@
     "id": "mariano",
     "name": "Mariano Arenas",
     "role": "Código & lógica",
+    "alias": "pícaro",
     "meta": "Buenos Aires, Argentina • 39 años",
     "bio": "Disfruta entender cómo funcionan las cosas, ordenar sistemas y encontrar soluciones simples a problemas complejos. Combina experiencia técnica, automatización y desarrollo para construir soluciones claras, eficientes y fáciles de mantener.",
     "github": "https://github.com/NanoCode10",
     "skills": ["DevOps/Infra", "JavaScript", "C#", "PostgreSQL"],
+    "skillHues": [120, 280, 200, 30],
     "favorites": [
       {
         "title": "Películas Favoritas",
@@ -49,10 +53,12 @@
     "id": "daniela",
     "name": "Daniela Cabrera",
     "role": "Diseño & detalle",
+    "alias": "elfa",
     "meta": "General Pico, La Pampa • 33 años",
     "bio": "Convierte problemas complejos en interfaces simples y llenas de intención. Busca la armonía visual y la perfección en cada pixel para lograr que la tecnología se sienta más humana.",
     "github": "https://github.com/Dancay5071",
     "skills": ["UX Writing", "HTML", "CSS", "Accesibilidad"],
+    "skillHues": [0, 60, 150, 220],
     "favorites": [
       {
         "title": "Películas Favoritas",
@@ -70,10 +76,12 @@
     "id": "pablo",
     "name": "Pablo Macia",
     "role": "Estrategia & movimiento",
+    "alias": "caballero",
     "meta": "Buenos Aires, Argentina • 38 años",
     "bio": "Une visión técnica y creatividad para que cada entrega avance con propósito. Piensa el diseño como un sistema: cada decisión tiene impacto en el todo y trabaja para que la experiencia final sea coherente y memorable.",
     "github": "https://github.com/pablormacia",
     "skills": ["HTML", "Javascript", "Git/GitHub", "UI/UX"],
+    "skillHues": [30, 200, 120, 280],
     "favorites": [
       {
         "title": "Series favoritas",
@@ -91,18 +99,16 @@
     "id": "fernando",
     "name": "Fernando Palearuzza",
     "role": "Contenido & empatía",
+    "alias": "guerrero",
     "meta": "Buenos Aires, Argentina • 26 años",
     "bio": "Conecta ideas y personas a través de historias claras y experiencias accesibles. Apasionado por la usabilidad y la creación de interfaces que realmente resuelvan problemas y mejoren la vida de los usuarios en cada interacción digital.",
     "github": "https://github.com/FerPalearuzza",
     "skills": ["Testing", "Web", "Diseño UI", "MySQL"],
+    "skillHues": [280, 200, 30, 120],
     "favorites": [
       {
         "title": "Películas Favoritas",
-        "items": [
-          "Volver al Futuro",
-          "El planeta del Tesoro",
-          "Piratas del Caribe"
-        ]
+        "items": ["Volver al Futuro", "El planeta del Tesoro", "Piratas del Caribe"]
       },
       {
         "title": "Libros Favoritos",
