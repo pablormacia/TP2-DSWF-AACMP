@@ -96,5 +96,18 @@
     "label": "TP2 · Contenido",
     "period": "Migración a React",
     "gem": "sage"
+  },
+  {
+    "id": 9,
+    "stage": "TP2",
+    "title": "La sidebar como referencia fija",
+    "paragraphs": [
+      "En escritorio la sidebar quedó fija a la izquierda y el contenido se corre a su lado; por debajo de 1200 px vuelve el panel que abre y cierra. El isotipo </> pasó a un componente compartido por la sidebar y el header.",
+      "La consigna pide una sidebar que permanezca mientras cambia el contenido, y la portada estaba pensada a todo el ancho. Comprobamos en 1920, 1366, 1199 y 390 px que las cinco tarjetas y el hero siguieran entrando sin desbordes."
+    ],
+    "label": "TP2 · Navegación",
+    "period": "Cierre y entrega",
+    "gem": "lavender",
+    "note": "Decisión"
   }
 ]

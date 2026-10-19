@@ -39,6 +39,9 @@
 
 /* Sidebar — marca del proyecto con tipografía heading y línea decorativa cian */
 .tp2-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   font-family: var(--font-heading);
   font-weight: 700;
   font-size: 1.5rem;
@@ -58,6 +61,11 @@
   height: 2px;
   background: linear-gradient(90deg, var(--accent), var(--tech));
   border-radius: 2px;
+}
+.tp2-brand .brand-mark {
+  background: none;
+  box-shadow: none;
+  color: var(--tech);
 }
 .tp2-brand small {
   display: block;
@@ -766,4 +774,34 @@ html:has(.tp2-sidebar.is-open) {
 }
 @media (prefers-reduced-motion: reduce) {
   .tp2-page { animation: none; }
+}
+
+/* Escritorio — la sidebar queda fija como referencia y el contenido se corre.
+   El ancho de corte debe coincidir con WIDE en Layout.jsx. */
+@media (min-width: 1200px) {
+  .tp2-sidebar {
+    width: 260px;
+    transform: none;
+    visibility: visible;
+    transition: none;
+    box-shadow: none;
+  }
+  .tp2-close,
+  .tp2-sections-toggle,
+  .tp2-backdrop {
+    display: none;
+  }
+  .tp2-shell {
+    margin-left: 260px;
+  }
+  .site-header {
+    padding-left: clamp(24px, 4vw, 56px);
+  }
+  /* La identidad ya está en la sidebar; sin el logo, la nav vuelve a la derecha. */
+  .site-header .brand {
+    display: none;
+  }
+  .site-header .main-nav {
+    margin-left: auto;
+  }
 }

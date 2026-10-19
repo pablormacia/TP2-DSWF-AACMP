@@ -56,7 +56,7 @@ Vercel: importar el repositorio como proyecto Vite, compilar con `npm run build`
 | `/arbol`      | Jerarquía real de componentes, con nodos expandibles                                                                                    |
 | `/bitacora`   | Registros del TP1 y de la migración a TP2, desplegables y filtro por etapa                                                              |
 
-La sidebar compartida identifica la sección activa y se abre como un panel superpuesto mediante “Secciones TP2” o el menú móvil. Se cierra por botón, fondo o Escape. Así se conserva el ancho y la composición originales de la portada. El tema se guarda localmente y adapta los avatares. Las rutas anteriores `.html` redirigen a las pantallas React.
+La sidebar compartida muestra la identidad del equipo e identifica la sección activa. Desde 1200 px queda fija a la izquierda y el contenido se ubica a su lado; en pantallas menores se abre como un panel superpuesto mediante el botón ☰ y se cierra por botón, fondo o Escape. El tema se guarda localmente y adapta los avatares. Las rutas anteriores `.html` redirigen a las pantallas React.
 
 La API utiliza [GitHub Search Repositories](https://docs.github.com/en/rest/search/search#search-repositories), sin tokens ni claves privadas. Puede limitar consultas anónimas; la interfaz muestra el error y permite reintentar. Los recursos locales no dependen de la API.
 
@@ -79,13 +79,12 @@ Validación local: compilación de producción; cinco pruebas automatizadas de l
 
 ## Uso de IA
 
-Uso confirmado para esta implementación:
+| Integrante           | Aplicación                         | Modelo          | Contenido o tarea                                                                                                                |
+| -------------------- | ---------------------------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| Por confirmar        | OpenAI Codex                       | GPT-6           | Lectura de la consigna, migración a componentes React, sidebar, datos locales, filtros, API, árbol, bitácora, estilos y revisión |
+| Juan Manuel Albareda | Claude Code (extensión de VS Code) | Claude Opus 5.5 | Sidebar fija en escritorio con panel en móvil, isotipo compartido (`BrandMark`), árbol y bitácora actualizados, documentación   |
 
-| Aplicación   | Modelo | Tareas                                                                                                                           |
-| ------------ | ------ | -------------------------------------------------------------------------------------------------------------------------------- |
-| OpenAI Codex | GPT-6  | Lectura de la consigna, migración a componentes React, sidebar, datos locales, filtros, API, árbol, bitácora, estilos y revisión |
-
-El equipo debe revisar y apropiarse de los cambios. No se atribuye este uso a un integrante específico porque todavía no se confirmó quién operó la herramienta. El uso previo de IA para imágenes o contenido del TP1 y el detalle por integrante también requieren confirmación; no se inventan aplicaciones ni modelos.
+Cada integrante completa su fila. La de OpenAI Codex queda sin atribuir hasta que se confirme quién operó la herramienta. El uso previo de IA para imágenes o contenido del TP1 y el detalle por integrante también requieren confirmación; no se inventan aplicaciones ni modelos.
 
 ## Estado de la entrega
 

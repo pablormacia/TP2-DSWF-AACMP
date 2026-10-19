@@ -7,8 +7,8 @@ const tree = {
         {
           name: "Layout",
           children: [
-            { name: "Header" },
-            { name: "Sidebar" },
+            { name: "Header", children: [{ name: "BrandMark" }] },
+            { name: "Sidebar", children: [{ name: "BrandMark" }] },
             {
               name: "Outlet · una página según la ruta",
               children: [

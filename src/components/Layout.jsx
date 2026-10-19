@@ -2,6 +2,28 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import Footer from "./Footer.jsx";
 
+const WIDE = "(min-width: 1200px)";
+
+function BrandMark() {
+  return (
+    <span className="brand-mark" aria-hidden="true">
+      <svg
+        className="brand-iso"
+        viewBox="0 0 32 24"
+        width="30"
+        height="22"
+        fill="none"
+      >
+        <path
+          className="brand-iso-code"
+          d="M9 6.5 3.5 12 9 17.5M23 6.5l5.5 5.5-5.5 5.5"
+        />
+        <path className="brand-iso-slash" d="M18.6 3.5 13.4 20.5" />
+      </svg>
+    </span>
+  );
+}
+
 export function Header({ theme, onTheme, onMenu, open }) {
   const location = useLocation();
   const home = location.pathname === "/" || location.pathname === "/equipo";
@@ -20,21 +42,7 @@ export function Header({ theme, onTheme, onMenu, open }) {
   return (
     <header className="site-header">
       <Link className="brand" to="/" aria-label="AACMP, inicio">
-        <span className="brand-mark" aria-hidden="true">
-          <svg
-            className="brand-iso"
-            viewBox="0 0 32 24"
-            width="30"
-            height="22"
-            fill="none"
-          >
-            <path
-              className="brand-iso-code"
-              d="M9 6.5 3.5 12 9 17.5M23 6.5l5.5 5.5-5.5 5.5"
-            />
-            <path className="brand-iso-slash" d="M18.6 3.5 13.4 20.5" />
-          </svg>
-        </span>
+        <BrandMark />
         <span className="brand-name">
           AACMP<small>Frontend Gems</small>
         </span>
@@ -103,7 +111,7 @@ export function Header({ theme, onTheme, onMenu, open }) {
     </header>
   );
 }
-export function Sidebar({ open, onClose }) {
+export function Sidebar({ open, wide, onClose }) {
   const panel = useRef(null);
   useEffect(() => {
     if (!open) return;
@@ -117,10 +125,10 @@ export function Sidebar({ open, onClose }) {
       ref={panel}
       id="tp2-sidebar"
       className={`tp2-sidebar ${open ? "is-open" : ""}`}
-      inert={!open ? true : undefined}
+      inert={!open && !wide ? true : undefined}
       aria-label="Secciones de AACMP"
       onKeyDown={(e) => {
-        if (e.key !== "Tab") return;
+        if (e.key !== "Tab" || wide) return;
         const controls = [...e.currentTarget.querySelectorAll("button,a")];
         if (e.shiftKey && document.activeElement === controls[0]) {
           e.preventDefault();
@@ -134,9 +142,12 @@ export function Sidebar({ open, onClose }) {
       <button className="tp2-close" onClick={onClose}>
         Cerrar menú ×
       </button>
-      <div className="tp2-brand">
-        AACMP<small>Frontend Gems · TP2</small>
-      </div>
+      <Link className="tp2-brand" to="/" onClick={onClose} aria-label="AACMP, inicio">
+        <BrandMark />
+        <span>
+          AACMP<small>Frontend Gems · TP2</small>
+        </span>
+      </Link>
       <p className="tp2-nav-label">Nuestro universo</p>
       <nav aria-label="Secciones del TP2">
         {[
@@ -175,6 +186,17 @@ export default function Layout() {
       ? "dark"
       : "light";
   });
+  // Debe coincidir con el @media (min-width: 1200px) de la sidebar fija en styles.css.
+  const [wide, setWide] = useState(() => window.matchMedia(WIDE).matches);
+  useEffect(() => {
+    const query = window.matchMedia(WIDE);
+    const change = (e) => {
+      setWide(e.matches);
+      if (e.matches) setOpen(false);
+    };
+    query.addEventListener("change", change);
+    return () => query.removeEventListener("change", change);
+  }, []);
   const home = ["/", "/equipo", "/index.html"].includes(location.pathname);
   useLayoutEffect(() => {
     document.body.className = home ? "home-page" : "";
@@ -233,7 +255,7 @@ export default function Layout() {
       <a className="tp2-skip" href="#content">
         Saltar al contenido
       </a>
-      <div inert={open ? true : undefined}>
+      <div className="tp2-shell" inert={open ? true : undefined}>
         <Header
           theme={theme}
           open={open}
@@ -269,7 +291,7 @@ export default function Layout() {
           onClick={close}
         />
       )}
-      <Sidebar open={open} onClose={close} />
+      <Sidebar open={open} wide={wide} onClose={close} />
     </div>
   );
 }
