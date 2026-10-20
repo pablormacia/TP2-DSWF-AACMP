@@ -2,21 +2,10 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import Footer from "./Footer.jsx";
 
-export function Header({ theme, onTheme, onMenu, open }) {
+export function Header({ theme, onTheme, onMenu, open, teamActive }) {
   const location = useLocation();
-  const home = location.pathname === "/" || location.pathname === "/equipo";
-  const [teamActive, setTeamActive] = useState(false);
-  useEffect(() => {
-    const update = () => {
-      const team = document.getElementById("equipo");
-      setTeamActive(
-        Boolean(home && team && window.scrollY >= team.offsetTop - 250),
-      );
-    };
-    update();
-    window.addEventListener("scroll", update, { passive: true });
-    return () => window.removeEventListener("scroll", update);
-  }, [home, location.pathname]);
+  const home = ["/", "/equipo", "/index.html"].includes(location.pathname);
+
   return (
     <header className="site-header">
       <Link className="brand" to="/" aria-label="AACMP, inicio">
@@ -57,13 +46,20 @@ export function Header({ theme, onTheme, onMenu, open }) {
           to="/"
           className={home && !teamActive ? "active" : undefined}
           aria-current={home && !teamActive ? "page" : undefined}
+          onClick={() => {
+            if (home) window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
         >
           Inicio
         </Link>
         <Link
-          to={home ? "#equipo" : "/#equipo"}
+          to={home ? "#equipo" : "/equipo"}
           className={teamActive ? "active" : undefined}
           aria-current={teamActive ? "location" : undefined}
+          onClick={() => {
+            const el = document.getElementById("equipo");
+            if (el) el.scrollIntoView({ behavior: "smooth" });
+          }}
         >
           Equipo
         </Link>
@@ -103,8 +99,12 @@ export function Header({ theme, onTheme, onMenu, open }) {
     </header>
   );
 }
-export function Sidebar({ open, onClose }) {
+
+export function Sidebar({ open, onClose, teamActive }) {
   const panel = useRef(null);
+  const location = useLocation();
+  const home = ["/", "/equipo", "/index.html"].includes(location.pathname);
+
   useEffect(() => {
     if (!open) return;
     const frame = requestAnimationFrame(() =>
@@ -112,6 +112,23 @@ export function Sidebar({ open, onClose }) {
     );
     return () => cancelAnimationFrame(frame);
   }, [open]);
+
+  const handleNavClick = (to) => {
+    onClose();
+    if (to === "/equipo") {
+      setTimeout(() => {
+        const team = document.getElementById("equipo");
+        if (team) {
+          team.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 50);
+    } else if (to === "/" && home) {
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }, 50);
+    }
+  };
+
   return (
     <aside
       ref={panel}
@@ -134,9 +151,18 @@ export function Sidebar({ open, onClose }) {
       <button className="tp2-close" onClick={onClose}>
         Cerrar menú ×
       </button>
-      <div className="tp2-brand">
+      <Link
+        className="tp2-brand"
+        to="/"
+        onClick={() => {
+          onClose();
+          if (home) {
+            setTimeout(() => window.scrollTo({ top: 0, behavior: "smooth" }), 50);
+          }
+        }}
+      >
         AACMP<small>Frontend Gems · TP2</small>
-      </div>
+      </Link>
       <p className="tp2-nav-label">Nuestro universo</p>
       <nav aria-label="Secciones del TP2">
         {[
@@ -146,12 +172,34 @@ export function Sidebar({ open, onClose }) {
           ["/explorar", "Explorar API"],
           ["/arbol", "Árbol de React"],
           ["/bitacora", "Bitácora"],
-        ].map(([to, label]) => (
-          <NavLink key={to} end={to === "/"} to={to} onClick={onClose}>
-            {label}
-            <span className="nav-arrow" aria-hidden="true">→</span>
-          </NavLink>
-        ))}
+        ].map(([to, label]) => {
+          const isItemActive =
+            to === "/equipo"
+              ? location.pathname === "/equipo" || (location.pathname === "/" && teamActive)
+              : to === "/"
+                ? location.pathname === "/" && !teamActive
+                : location.pathname === to;
+
+          return (
+            <NavLink
+              key={to}
+              end={to === "/" || to === "/equipo"}
+              to={to}
+              className={isItemActive ? "active" : undefined}
+              aria-current={
+                isItemActive
+                  ? to === "/equipo" && teamActive
+                    ? "location"
+                    : "page"
+                  : undefined
+              }
+              onClick={() => handleNavClick(to)}
+            >
+              {label}
+              <span className="nav-arrow" aria-hidden="true">→</span>
+            </NavLink>
+          );
+        })}
       </nav>
       <p className="tp2-sidebar-foot">
         Cinco mentes.
@@ -161,21 +209,36 @@ export function Sidebar({ open, onClose }) {
     </aside>
   );
 }
+
 export default function Layout() {
-  const location = useLocation(),
-    trigger = useRef(null);
+  const location = useLocation();
+  const trigger = useRef(null);
   const activeTrigger = useRef(null);
   const [open, setOpen] = useState(false);
+  const [teamActive, setTeamActive] = useState(false);
   const [theme, setTheme] = useState(() => {
     try {
       const saved = localStorage.getItem("aacmp-theme");
       if (["light", "dark"].includes(saved)) return saved;
-    } catch {}
+    } catch { }
     return window.matchMedia("(prefers-color-scheme: dark)").matches
       ? "dark"
       : "light";
   });
   const home = ["/", "/equipo", "/index.html"].includes(location.pathname);
+
+  useEffect(() => {
+    const update = () => {
+      const team = document.getElementById("equipo");
+      setTeamActive(
+        Boolean(home && team && window.scrollY >= team.offsetTop - 250),
+      );
+    };
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    return () => window.removeEventListener("scroll", update);
+  }, [home, location.pathname]);
+
   useLayoutEffect(() => {
     document.body.className = home ? "home-page" : "";
     document.body.dataset.member = location.pathname.split("/equipo/")[1] || "";
@@ -185,20 +248,36 @@ export default function Layout() {
       delete document.body.dataset.member;
     };
   }, [home, location.pathname, theme]);
+
   useEffect(() => {
     try {
       localStorage.setItem("aacmp-theme", theme);
-    } catch {}
+    } catch { }
   }, [theme]);
+
   useEffect(() => {
     setOpen(false);
     document.title = "AACMP | Frontend Gems";
     if (location.hash) {
-      requestAnimationFrame(() =>
-        document.getElementById(location.hash.slice(1))?.scrollIntoView(),
-      );
-    } else window.scrollTo(0, 0);
+      const targetId = location.hash.slice(1);
+      const scroll = () => {
+        const el = document.getElementById(targetId);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      };
+      requestAnimationFrame(scroll);
+      setTimeout(scroll, 100);
+    } else if (location.pathname === "/equipo") {
+      const scroll = () => {
+        const el = document.getElementById("equipo");
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      };
+      requestAnimationFrame(scroll);
+      setTimeout(scroll, 100);
+    } else {
+      window.scrollTo(0, 0);
+    }
   }, [location.pathname, location.hash]);
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) =>
@@ -215,11 +294,13 @@ export default function Layout() {
       .forEach((el) => observer.observe(el));
     return () => observer.disconnect();
   }, [location.pathname]);
+
   function close() {
     setOpen(false);
     const target = activeTrigger.current || trigger.current;
     requestAnimationFrame(() => target?.focus());
   }
+
   useEffect(() => {
     if (!open) return;
     const key = (e) => {
@@ -228,6 +309,7 @@ export default function Layout() {
     document.addEventListener("keydown", key);
     return () => document.removeEventListener("keydown", key);
   }, [open]);
+
   return (
     <div id="top">
       <a className="tp2-skip" href="#content">
@@ -237,6 +319,7 @@ export default function Layout() {
         <Header
           theme={theme}
           open={open}
+          teamActive={teamActive}
           onTheme={() => setTheme(theme === "dark" ? "light" : "dark")}
           onMenu={(event) => {
             activeTrigger.current = event.currentTarget;
@@ -269,7 +352,7 @@ export default function Layout() {
           onClick={close}
         />
       )}
-      <Sidebar open={open} onClose={close} />
+      <Sidebar open={open} onClose={close} teamActive={teamActive} />
     </div>
   );
 }
