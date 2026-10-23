@@ -681,6 +681,14 @@
   padding-right: 20px;
 }
 
+/* Etiquetas de la bitácora en tema claro: mismo tono y saturación de cada gema,
+   más oscuras para alcanzar 4.5:1 sobre la tarjeta blanca. */
+:root:not([data-theme="dark"]) .log-entry[data-gem="coral"] .log-card h3 { color: #af5e4f; }
+:root:not([data-theme="dark"]) .log-entry[data-gem="cerulean"] .log-card h3 { color: #4a7b96; }
+:root:not([data-theme="dark"]) .log-entry[data-gem="ochre"] .log-card h3 { color: #907034; }
+:root:not([data-theme="dark"]) .log-entry[data-gem="sage"] .log-card h3 { color: #5e7c50; }
+:root:not([data-theme="dark"]) .log-entry[data-gem="lavender"] .log-card h3 { color: #8068b4; }
+
 /* Overflow del html cuando el sidebar está abierto */
 html:has(.tp2-sidebar.is-open) {
   overflow: hidden;

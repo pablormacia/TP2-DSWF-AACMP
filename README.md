@@ -70,12 +70,13 @@ La API utiliza [GitHub Search Repositories](https://docs.github.com/en/rest/sear
 - `src/components/Footer.jsx`: footer original según la página.
 - `src/pages/`: portada, perfiles, recursos, API, árbol y bitácora.
 - `src/data/`: integrantes, 22 recursos y registros del proceso.
+- `src/lib/`: `github.js` consulta la API y valida su respuesta; `resources.js` resuelve la búsqueda y el filtro de recursos como funciones puras.
 - `public/css/`: los estilos originales del TP1, idénticos a los del sitio de referencia.
 - `src/styles.css`: estilos acotados al panel lateral y a las secciones nuevas del TP2.
 
 Las pantallas se construyen con JSX y estado/hooks de React. El HTML serializado y los scripts del TP1 se conservan como referencia en `src/pages.json` y `public/js/`; la aplicación nueva no los importa ni ejecuta. Las capturas preexistentes en `public/docs/capturas/` corresponden al TP1.
 
-Validación local: compilación de producción; cinco pruebas automatizadas de la API (consulta, límites, estructura de respuesta, resultado vacío y errores); revisión en navegador de los cinco perfiles, búsqueda y filtro combinados, bitácora, árbol desplegable, tema y menú móvil a 390 px. La API devolvió nueve repositorios en la consulta real.
+Validación local: compilación de producción; 14 pruebas automatizadas con `node:test`: seis de la API (consulta sin credenciales, límites, respuestas inválidas incluida `null`, resultado vacío y errores) y ocho de los recursos (búsqueda por nombre, mayúsculas y tildes, categoría, combinación, sin resultados, restablecimiento, espacios y catálogo local); revisión en navegador de los cinco perfiles, búsqueda y filtro combinados, bitácora, árbol desplegable, tema y menú móvil a 390 px. La API devolvió nueve repositorios en la consulta real.
 
 ## Uso de IA
 
