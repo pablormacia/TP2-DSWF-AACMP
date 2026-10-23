@@ -15,6 +15,8 @@ export async function fetchRepositories({ signal, fetchImpl = fetch } = {}) {
   }
   const data = await response.json();
   if (
+    !data ||
+    typeof data !== "object" ||
     !Array.isArray(data.items) ||
     data.items.some(
       (item) =>

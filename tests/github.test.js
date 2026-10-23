@@ -30,6 +30,8 @@ test("límite de consultas produce un error recuperable", async () => {
 });
 test("rechaza una respuesta inválida antes de renderizar tarjetas", async () => {
   for (const data of [
+    null,
+    "respuesta inesperada",
     {},
     { items: [null] },
     { items: [{ ...repository, stargazers_count: null }] },
@@ -41,6 +43,18 @@ test("rechaza una respuesta inválida antes de renderizar tarjetas", async () =>
       /inesperada/,
     );
   }
+});
+test("un JSON null muestra el error de respuesta inesperada", async () => {
+  await assert.rejects(
+    fetchRepositories({
+      fetchImpl: async () => ({ ok: true, json: async () => null }),
+    }),
+    (error) => {
+      assert.match(error.message, /inesperada/);
+      assert.equal(apiErrorMessage(error), "La API devolvió una respuesta inesperada.");
+      return true;
+    },
+  );
 });
 test("una consulta vacía es un resultado válido", async () => {
   assert.deepEqual(

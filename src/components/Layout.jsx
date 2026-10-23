@@ -3,6 +3,23 @@ import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import Footer from "./Footer.jsx";
 
 const WIDE = "(min-width: 1200px)";
+const SECTIONS = [
+  ["/", "Inicio"],
+  ["/equipo", "Equipo"],
+  ["/recursos", "Recursos"],
+  ["/explorar", "Explorar API"],
+  ["/arbol", "Árbol de React"],
+  ["/bitacora", "Bitácora"],
+];
+const HOME_PATHS = ["/", "/equipo", "/index.html"];
+
+// Sección activa según la ruta; en la portada, el scroll distingue Inicio de Equipo.
+function sectionOf(pathname, teamActive) {
+  const path = pathname.replace(/\/+$/, "") || "/";
+  if (HOME_PATHS.includes(path)) return teamActive ? "/equipo" : "/";
+  if (path.startsWith("/equipo/")) return "/equipo";
+  return SECTIONS.some(([to]) => to === path) ? path : null;
+}
 
 function BrandMark() {
   return (
@@ -24,21 +41,9 @@ function BrandMark() {
   );
 }
 
-export function Header({ theme, onTheme, onMenu, open }) {
+export function Header({ theme, onTheme, onMenu, open, section, current }) {
   const location = useLocation();
-  const home = location.pathname === "/" || location.pathname === "/equipo";
-  const [teamActive, setTeamActive] = useState(false);
-  useEffect(() => {
-    const update = () => {
-      const team = document.getElementById("equipo");
-      setTeamActive(
-        Boolean(home && team && window.scrollY >= team.offsetTop - 250),
-      );
-    };
-    update();
-    window.addEventListener("scroll", update, { passive: true });
-    return () => window.removeEventListener("scroll", update);
-  }, [home, location.pathname]);
+  const home = HOME_PATHS.includes(location.pathname);
   return (
     <header className="site-header">
       <Link className="brand" to="/" aria-label="AACMP, inicio">
@@ -63,15 +68,15 @@ export function Header({ theme, onTheme, onMenu, open }) {
       <nav id="main-nav" className="main-nav" aria-label="Navegación principal">
         <Link
           to="/"
-          className={home && !teamActive ? "active" : undefined}
-          aria-current={home && !teamActive ? "page" : undefined}
+          className={section === "/" ? "active" : undefined}
+          aria-current={current("/")}
         >
           Inicio
         </Link>
         <Link
-          to={home ? "#equipo" : "/#equipo"}
-          className={teamActive ? "active" : undefined}
-          aria-current={teamActive ? "location" : undefined}
+          to={home ? "#equipo" : "/equipo"}
+          className={section === "/equipo" ? "active" : undefined}
+          aria-current={current("/equipo")}
         >
           Equipo
         </Link>
@@ -111,7 +116,8 @@ export function Header({ theme, onTheme, onMenu, open }) {
     </header>
   );
 }
-export function Sidebar({ open, wide, onClose }) {
+export function Sidebar({ open, wide, onClose, section, current }) {
+  const step = SECTIONS.findIndex(([to]) => to === section) + 1;
   const panel = useRef(null);
   useEffect(() => {
     if (!open) return;
@@ -148,20 +154,28 @@ export function Sidebar({ open, wide, onClose }) {
           AACMP<small>Frontend Gems · TP2</small>
         </span>
       </Link>
+      <div className="tp2-progress" aria-hidden="true" data-step={step}>
+        {SECTIONS.map(([to], i) => (
+          <span
+            key={to}
+            className={i < step ? "is-lit" : undefined}
+            style={{ "--i": i }}
+          />
+        ))}
+      </div>
       <p className="tp2-nav-label">Nuestro universo</p>
       <nav aria-label="Secciones del TP2">
-        {[
-          ["/", "Inicio"],
-          ["/equipo", "Equipo"],
-          ["/recursos", "Recursos"],
-          ["/explorar", "Explorar API"],
-          ["/arbol", "Árbol de React"],
-          ["/bitacora", "Bitácora"],
-        ].map(([to, label]) => (
-          <NavLink key={to} end={to === "/"} to={to} onClick={onClose}>
+        {SECTIONS.map(([to, label]) => (
+          <Link
+            key={to}
+            to={to}
+            className={section === to ? "active" : undefined}
+            aria-current={current(to)}
+            onClick={onClose}
+          >
             {label}
             <span className="nav-arrow" aria-hidden="true">→</span>
-          </NavLink>
+          </Link>
         ))}
       </nav>
       <p className="tp2-sidebar-foot">
@@ -197,7 +211,27 @@ export default function Layout() {
     query.addEventListener("change", change);
     return () => query.removeEventListener("change", change);
   }, []);
-  const home = ["/", "/equipo", "/index.html"].includes(location.pathname);
+  const home = HOME_PATHS.includes(location.pathname);
+  const [teamActive, setTeamActive] = useState(false);
+  useEffect(() => {
+    const update = () => {
+      const team = document.getElementById("equipo");
+      setTeamActive(
+        Boolean(home && team && window.scrollY >= team.offsetTop - 250),
+      );
+    };
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    return () => window.removeEventListener("scroll", update);
+  }, [home, location.pathname]);
+  const section = sectionOf(location.pathname, teamActive);
+  // "page" si la sección coincide con la ruta; "location" si la marca el scroll de la portada.
+  const current = (to) =>
+    section !== to
+      ? undefined
+      : sectionOf(location.pathname, location.pathname === "/equipo") === to
+        ? "page"
+        : "location";
   useLayoutEffect(() => {
     document.body.className = home ? "home-page" : "";
     document.body.dataset.member = location.pathname.split("/equipo/")[1] || "";
@@ -215,12 +249,21 @@ export default function Layout() {
   useEffect(() => {
     setOpen(false);
     document.title = "AACMP | Frontend Gems";
-    if (location.hash) {
-      requestAnimationFrame(() =>
-        document.getElementById(location.hash.slice(1))?.scrollIntoView(),
-      );
-    } else window.scrollTo(0, 0);
-  }, [location.pathname, location.hash]);
+    // /equipo es la portada desplazada a la sección del equipo.
+    const target = location.hash
+      ? location.hash.slice(1)
+      : location.pathname === "/equipo"
+        ? "equipo"
+        : null;
+    if (!target) {
+      window.scrollTo(0, 0);
+      return;
+    }
+    const frame = requestAnimationFrame(() =>
+      document.getElementById(target)?.scrollIntoView(),
+    );
+    return () => cancelAnimationFrame(frame);
+  }, [location.pathname, location.hash, location.key]);
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) =>
@@ -259,6 +302,8 @@ export default function Layout() {
         <Header
           theme={theme}
           open={open}
+          section={section}
+          current={current}
           onTheme={() => setTheme(theme === "dark" ? "light" : "dark")}
           onMenu={(event) => {
             activeTrigger.current = event.currentTarget;
@@ -291,7 +336,13 @@ export default function Layout() {
           onClick={close}
         />
       )}
-      <Sidebar open={open} wide={wide} onClose={close} />
+      <Sidebar
+        open={open}
+        wide={wide}
+        onClose={close}
+        section={section}
+        current={current}
+      />
     </div>
   );
 }

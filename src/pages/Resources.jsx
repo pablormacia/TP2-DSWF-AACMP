@@ -1,10 +1,10 @@
 import { useState } from "react";
 import resources from "../data/resources.json";
-export const normalize = (value) =>
-  value
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase();
+import {
+  DEFAULT_FILTERS,
+  categoriesOf,
+  filterResources,
+} from "../lib/resources.js";
 export function ResourceCard({ resource }) {
   return (
     <article className="resource-card">
@@ -27,18 +27,12 @@ export function ResourceCard({ resource }) {
   );
 }
 export default function Resources() {
-  const [query, setQuery] = useState(""),
-    [category, setCategory] = useState("Todas");
-  const filtered = resources.filter(
-    (r) =>
-      (category === "Todas" || r.category === category) &&
-      normalize(`${r.name} ${r.description} ${r.detail}`).includes(
-        normalize(query.trim()),
-      ),
-  );
+  const [query, setQuery] = useState(DEFAULT_FILTERS.query),
+    [category, setCategory] = useState(DEFAULT_FILTERS.category);
+  const filtered = filterResources(resources, { query, category });
   function reset() {
-    setQuery("");
-    setCategory("Todas");
+    setQuery(DEFAULT_FILTERS.query);
+    setCategory(DEFAULT_FILTERS.category);
   }
   return (
     <section className="tp2-page section-shell">
@@ -64,7 +58,7 @@ export default function Resources() {
             value={category}
             onChange={(e) => setCategory(e.target.value)}
           >
-            {["Todas", ...new Set(resources.map((r) => r.category))].map(
+            {categoriesOf(resources).map(
               (c) => (
                 <option key={c}>{c}</option>
               ),

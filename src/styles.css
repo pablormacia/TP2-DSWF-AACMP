@@ -21,6 +21,10 @@
 .tp2-sidebar.is-open {
   transform: translateX(0);
   visibility: visible;
+  /* Visible desde el primer frame para que el foco entre al panel al abrirlo. */
+  transition:
+    transform 0.3s cubic-bezier(.4, 0, .2, 1),
+    visibility 0s;
 }
 
 /* Sidebar — botón cerrar con hover de acento */
@@ -37,7 +41,7 @@
   color: var(--accent);
 }
 
-/* Sidebar — marca del proyecto con tipografía heading y línea decorativa cian */
+/* Sidebar — marca del proyecto con tipografía heading */
 .tp2-brand {
   display: flex;
   align-items: center;
@@ -49,18 +53,23 @@
   color: var(--text);
   letter-spacing: -0.03em;
   padding-bottom: 20px;
-  border-bottom: 1px solid var(--border);
-  position: relative;
 }
-.tp2-brand::after {
-  content: '';
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  width: 40px;
-  height: 2px;
-  background: linear-gradient(90deg, var(--accent), var(--tech));
+
+/* Sidebar — indicador de progreso: un segmento por sección, iluminados
+   hasta la activa con el degradado violeta→cian de la marca */
+.tp2-progress {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 4px;
+}
+.tp2-progress span {
+  height: 3px;
   border-radius: 2px;
+  background-color: var(--border);
+  transition: background-color .35s ease;
+}
+.tp2-progress .is-lit {
+  background-color: color-mix(in srgb, var(--accent) calc(100% - var(--i) * 20%), var(--tech));
 }
 .tp2-brand .brand-mark {
   background: none;
@@ -735,6 +744,9 @@ html:has(.tp2-sidebar.is-open) {
     transition: none;
   }
   .tp2-sidebar.is-open {
+    transition: none;
+  }
+  .tp2-progress span {
     transition: none;
   }
   .tp2-page .resource-card,

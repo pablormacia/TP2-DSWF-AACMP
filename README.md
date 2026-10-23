@@ -83,6 +83,11 @@ Validación local: compilación de producción; cinco pruebas automatizadas de l
 | -------------------- | ---------------------------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------- |
 | Por confirmar        | OpenAI Codex                       | GPT-6           | Lectura de la consigna, migración a componentes React, sidebar, datos locales, filtros, API, árbol, bitácora, estilos y revisión |
 | Juan Manuel Albareda | Claude Code (extensión de VS Code) | Claude Opus 5.5 | Sidebar fija en escritorio con panel en móvil, isotipo compartido (`BrandMark`), árbol y bitácora actualizados, documentación   |
+| Mariano Arenas       | Claude Code (CLI)                  | Claude Opus 5.5 | Coordinación: auditoría de los 15 criterios, enlace `Equipo` con desplazamiento a la sección, indicador de progreso de la sidebar, revisión responsive en navegador |
+| Mariano Arenas       | OpenAI Codex (CLI)                 | GPT-6-Sol       | Implementación: lógica de búsqueda y filtro de recursos como función pura, sus tests y el manejo de una respuesta `null` de la API |
+| Mariano Arenas       | OpenCode                           | DeepSeek V4.1 Flash Free | Testing: revisión independiente de los criterios, del deploy y de los cambios anteriores                              |
+
+Mariano trabajó con [Herdr](https://herdr.dev) como orquestador: no es un modelo, sino el entorno de terminal que coordina a los tres agentes. Claude Code distribuyó las tareas, Codex implementó y OpenCode revisó de forma independiente; cada cambio se verificó con tests, compilación y pruebas en navegador.
 
 Cada integrante completa su fila. La de OpenAI Codex queda sin atribuir hasta que se confirme quién operó la herramienta. El uso previo de IA para imágenes o contenido del TP1 y el detalle por integrante también requieren confirmación; no se inventan aplicaciones ni modelos.
 
