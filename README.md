@@ -105,3 +105,21 @@ Antes de entregar:
 - Recorrer los perfiles, filtros, API, árbol y bitácora en el deploy.
 - Confirmar responsabilidades y aplicaciones/modelos de IA por integrante.
 - Registrar el enlace del repositorio en la fila del grupo, pestaña TP 2 de la planilla de entregas.
+
+## Capturas
+
+Se muestran las capturas de los módulos incorporados:
+
+### Exploración de la API
+
+![Sección de exploración de la API de GitHub](./public/docs/capturas/explorar-api.png)
+
+### Navegación
+
+![Menú lateral desplegado en móvil](./public/docs/capturas/men%C3%BA-desplegado-mobile.png)
+
+![Menú de escritorio en la portada](./public/docs/capturas/menu-index-desktop.png)
+
+### Recursos
+
+![Catálogo de recursos con búsqueda y filtros](./public/docs/capturas/recursos.png)
