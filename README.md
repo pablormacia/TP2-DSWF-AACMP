@@ -1,4 +1,4 @@
-﻿# AACMP · Frontend Gems · TP2
+# AACMP · Frontend Gems · TP2
 
 AACMP presenta a cinco integrantes que combinan análisis, desarrollo, diseño y contenido. Esta aplicación continúa el TP1 con componentes React y React Router, conservando el diseño de [la aplicación original](https://tp1-dswf-aacmp.vercel.app/index.html): cabecera superior, gema SVG animada, degradados violetas y cian, fondos ilustrados, tarjetas compactas y avatares con variantes claras y oscuras.
 
@@ -86,7 +86,8 @@ Validación local: compilación de producción; 14 pruebas automatizadas con `no
 | Juan Manuel Albareda | Claude Code (extensión de VS Code) | Claude Opus 5.5 | Sidebar fija en escritorio con panel en móvil, isotipo compartido (`BrandMark`), árbol y bitácora actualizados, documentación   |
 | Mariano Arenas       | Claude Code (CLI)                  | Claude Opus 5.5 | Coordinación: auditoría de los 15 criterios, enlace `Equipo` con desplazamiento a la sección, indicador de progreso de la sidebar, revisión responsive en navegador |
 | Mariano Arenas       | OpenAI Codex (CLI)                 | GPT-6-Sol       | Implementación: lógica de búsqueda y filtro de recursos como función pura, sus tests y el manejo de una respuesta `null` de la API |
-| Mariano Arenas       | OpenCode                           | DeepSeek V4.1 Flash Free | Testing: revisión independiente de los criterios, del deploy y de los cambios anteriores                              |
+| Mariano Arenas       | OpenCode                           | DeepSeek V4.1 Flash Free | Testing: revisión independiente de los criterios, del deploy y de los cambios anteriores  
+Fernando Palearuzza|Github Copilot | GPT-6 Luna|Chequeo de repositorio, código y ajustes finales |s
 
 Mariano trabajó con [Herdr](https://herdr.dev) como orquestador: no es un modelo, sino el entorno de terminal que coordina a los tres agentes. Claude Code distribuyó las tareas, Codex implementó y OpenCode revisó de forma independiente; cada cambio se verificó con tests, compilación y pruebas en navegador.
 
@@ -96,30 +97,23 @@ Cada integrante completa su fila. La de OpenAI Codex queda sin atribuir hasta qu
 
 Implementadas las funcionalidades de los criterios 4 a 14. La documentación identifica los cinco integrantes y el uso confirmado de IA (criterio 15). El detalle por integrante del nivel “Propone” está pendiente de confirmación.
 
-El deploy de Vercel y el repositorio independiente de TP2 están enlazados arriba. Antes de entregar, queda comprobar el acceso público, verificar que todos los integrantes tengan sus invitaciones aceptadas y completar las confirmaciones del grupo.
+El deploy de Vercel y el repositorio independiente de TP2 están enlazados arriba. Queda confirmado el acceso público, verificar que todos los integrantes tengan sus invitaciones aceptadas y completar las confirmaciones del grupo.
 
-Antes de entregar:
-
-- Abrir ambos enlaces sin iniciar sesión.
-- Confirmar acceso aceptado de los cinco integrantes.
-- Recorrer los perfiles, filtros, API, árbol y bitácora en el deploy.
-- Confirmar responsabilidades y aplicaciones/modelos de IA por integrante.
-- Registrar el enlace del repositorio en la fila del grupo, pestaña TP 2 de la planilla de entregas.
 
 ## Capturas
 
-Se muestran las capturas de los módulos incorporados:
+Se muestran las capturas de los módulos incorporados en esta entrega.
 
 ### Exploración de la API
 
 ![Sección de exploración de la API de GitHub](./public/docs/capturas/explorar-api.png)
 
-### Navegación
+### Menú desplegable: 
 
 ![Menú lateral desplegado en móvil](./public/docs/capturas/men%C3%BA-desplegado-mobile.png)
 
 ![Menú de escritorio en la portada](./public/docs/capturas/menu-index-desktop.png)
 
-### Recursos
+### Página de recursos con formulario y links   ,
 
 ![Catálogo de recursos con búsqueda y filtros](./public/docs/capturas/recursos.png)
