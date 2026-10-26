@@ -8,12 +8,12 @@ import ComponentTree from "./pages/ComponentTree.jsx";
 import Logbook from "./pages/Logbook.jsx";
 import members from "./data/members.json";
 import NotFound from "./components/NotFound.jsx";
+
 export default function App() {
   return (
     <Routes>
       <Route element={<Layout />}>
         <Route index element={<Home />} />
-        <Route path="equipo" element={<Home />} />
         <Route path="equipo" element={<Home />} />
         <Route path="equipo/:id" element={<Profile />} />
         <Route path="recursos" element={<Resources />} />
