@@ -18,15 +18,13 @@ AACMP presenta a cinco integrantes que combinan análisis, desarrollo, diseño y
 
 ## El equipo
 
-| Integrante           | GitHub                                                      | Aporte presentado en su perfil |
-| -------------------- | ----------------------------------------------------------- | ------------------------------ |
-| Juan Manuel Albareda | [juanmanuelalbareda](https://github.com/juanmanuelalbareda) | Análisis y calidad             |
-| Mariano Arenas       | [NanoCode10](https://github.com/NanoCode10)                 | Código y lógica                |
-| Daniela Cabrera      | [Dancay5071](https://github.com/Dancay5071)                 | Diseño y detalle               |
-| Pablo Macia          | [pablormacia](https://github.com/pablormacia)               | Estrategia y movimiento        |
-| Fernando Palearuzza  | [FerPalearuzza](https://github.com/FerPalearuzza)           | Contenido y empatía            |
-
-Los aportes reflejan el contenido del TP1. Las responsabilidades efectivas de implementación del TP2 deben ser confirmadas por el grupo.
+| Integrante           | GitHub                                                      | Perfil (TP1)            | Responsabilidad en el TP2                                                                                                   |
+| -------------------- | ----------------------------------------------------------- | ----------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| Juan Manuel Albareda | [juanmanuelalbareda](https://github.com/juanmanuelalbareda) | Análisis y calidad      | Sidebar fija en escritorio, isotipo compartido, árbol y bitácora actualizados; revisión contra la rúbrica y declaración de IA |
+| Mariano Arenas       | [NanoCode10](https://github.com/NanoCode10)                 | Código y lógica         | Navegación y sidebar, búsqueda y filtro de recursos como funciones puras, pruebas automatizadas, contraste de la bitácora    |
+| Daniela Cabrera      | [Dancay5071](https://github.com/Dancay5071)                 | Diseño y detalle        | Estilos de la navegación lateral y responsive; perfiles unificados en un componente reutilizable y desplazamiento a `#equipo` |
+| Pablo Macia          | [pablormacia](https://github.com/pablormacia)               | Estrategia y movimiento | Creación del repositorio, migración del TP1 a React (rutas, páginas, datos, API, árbol y bitácora) y deploy en Vercel        |
+| Fernando Palearuzza  | [FerPalearuzza](https://github.com/FerPalearuzza)           | Contenido y empatía     | Capturas del proyecto y revisión del README                                                                                 |
 
 ## Cómo ejecutar
 
@@ -98,7 +96,7 @@ Mariano trabajó con [Herdr](https://herdr.dev) como orquestador: no es un model
 
 Implementadas las funcionalidades de los criterios 4 a 14. La documentación identifica los cinco integrantes y, para cada uno, la aplicación, el modelo y la tarea en que usó IA (criterio 15).
 
-El deploy de Vercel y el repositorio independiente de TP2 están enlazados arriba. Queda confirmado el acceso público, verificar que todos los integrantes tengan sus invitaciones aceptadas y completar las confirmaciones del grupo.
+El deploy de Vercel y el repositorio independiente de TP2 están enlazados arriba. Ambos son de acceso público, y los cinco integrantes tienen aceptada la invitación como colaboradores del repositorio.
 
 
 ## Capturas
