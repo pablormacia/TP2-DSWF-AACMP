@@ -80,22 +80,23 @@ Validación local: compilación de producción; 14 pruebas automatizadas con `no
 
 ## Uso de IA
 
-| Integrante           | Aplicación                         | Modelo          | Contenido o tarea                                                                                                                |
-| -------------------- | ---------------------------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| Por confirmar        | OpenAI Codex                       | GPT-6           | Lectura de la consigna, migración a componentes React, sidebar, datos locales, filtros, API, árbol, bitácora, estilos y revisión |
-| Juan Manuel Albareda | Claude Code (extensión de VS Code) | Claude Opus 5.5 | Sidebar fija en escritorio con panel en móvil, isotipo compartido (`BrandMark`), árbol y bitácora actualizados, documentación   |
-| Mariano Arenas       | Claude Code (CLI)                  | Claude Opus 5.5 | Coordinación: auditoría de los 15 criterios, enlace `Equipo` con desplazamiento a la sección, indicador de progreso de la sidebar, revisión responsive en navegador |
-| Mariano Arenas       | OpenAI Codex (CLI)                 | GPT-6-Sol       | Implementación: lógica de búsqueda y filtro de recursos como función pura, sus tests y el manejo de una respuesta `null` de la API |
-| Mariano Arenas       | OpenCode                           | DeepSeek V4.1 Flash Free | Testing: revisión independiente de los criterios, del deploy y de los cambios anteriores  
-Fernando Palearuzza|Github Copilot | GPT-6 Luna|Chequeo de repositorio, código y ajustes finales |s
+La tabla diferencia la aplicación o entorno desde el que se trabajó del modelo empleado. Hay una fila por herramienta: quien usó más de una tiene varias.
+
+| Integrante           | Aplicación                         | Modelo                              | Contenido o tarea                                                                                                                                                   |
+| -------------------- | ---------------------------------- | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Juan Manuel Albareda | Claude Code (extensión de VS Code) | Claude Opus 5.5                     | Sidebar fija en escritorio con panel en móvil, isotipo compartido (`BrandMark`), árbol y bitácora actualizados, documentación y declaración de uso de IA            |
+| Mariano Arenas       | Claude Code (CLI)                  | Claude Opus 5.5                     | Coordinación: auditoría de los 15 criterios, enlace `Equipo` con desplazamiento a la sección, indicador de progreso de la sidebar, revisión responsive en navegador |
+| Mariano Arenas       | OpenAI Codex (CLI)                 | GPT-6-Sol                           | Implementación: lógica de búsqueda y filtro de recursos como función pura, sus tests y el manejo de una respuesta `null` de la API                                  |
+| Mariano Arenas       | OpenCode                           | DeepSeek V4.1 Flash Free            | Testing: revisión independiente de los criterios, del deploy y de los cambios anteriores                                                                            |
+| Daniela Cabrera      | Google Antigravity (IDE)           | Gemini 3.8 Flash, Claude 3.5 Sonnet | Resolución del bug de navegación y desplazamiento suave hacia la sección `#equipo` desde la sidebar y el header                                                     |
+| Pablo Macia          | OpenAI Codex                       | GPT-6                               | Lectura de la consigna, migración a componentes React, sidebar, datos locales, filtros, API, árbol, bitácora, estilos y revisión                                    |
+| Fernando Palearuzza  | GitHub Copilot                     | GPT-6 Luna                          | Chequeo del repositorio y del código, ajustes finales                                                                                                               |
 
 Mariano trabajó con [Herdr](https://herdr.dev) como orquestador: no es un modelo, sino el entorno de terminal que coordina a los tres agentes. Claude Code distribuyó las tareas, Codex implementó y OpenCode revisó de forma independiente; cada cambio se verificó con tests, compilación y pruebas en navegador.
 
-Cada integrante completa su fila. La de OpenAI Codex queda sin atribuir hasta que se confirme quién operó la herramienta. El uso previo de IA para imágenes o contenido del TP1 y el detalle por integrante también requieren confirmación; no se inventan aplicaciones ni modelos.
-
 ## Estado de la entrega
 
-Implementadas las funcionalidades de los criterios 4 a 14. La documentación identifica los cinco integrantes y el uso confirmado de IA (criterio 15). El detalle por integrante del nivel “Propone” está pendiente de confirmación.
+Implementadas las funcionalidades de los criterios 4 a 14. La documentación identifica los cinco integrantes y, para cada uno, la aplicación, el modelo y la tarea en que usó IA (criterio 15).
 
 El deploy de Vercel y el repositorio independiente de TP2 están enlazados arriba. Queda confirmado el acceso público, verificar que todos los integrantes tengan sus invitaciones aceptadas y completar las confirmaciones del grupo.
 
