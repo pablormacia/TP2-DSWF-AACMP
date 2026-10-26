@@ -33,8 +33,11 @@ const tree = {
                       name: "ProfileContent",
                       children: [
                         {
-                          name: "View · perfil del integrante",
-                          children: [{ name: "ThemedImage" }],
+                          name: "ProfileView · un componente para los cinco perfiles",
+                          children: [
+                            { name: "ThemedImage" },
+                            { name: "SkillBadge × habilidades" },
+                          ],
                         },
                       ],
                     },

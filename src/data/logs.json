@@ -109,5 +109,18 @@
     "period": "Cierre y entrega",
     "gem": "lavender",
     "note": "Decisión"
+  },
+  {
+    "id": 10,
+    "stage": "TP2",
+    "title": "Un solo componente para los cinco perfiles",
+    "paragraphs": [
+      "Los cinco perfiles estaban escritos a mano, uno por integrante. Los unificamos en un componente que recibe los datos de members.json por props: alias, habilidades con su tono y favoritos.",
+      "La rama del cambio había partido de una versión vieja y chocaba con la navegación ya integrada. Conservamos la navegación vigente, incorporamos los perfiles y comparamos los cinco en escritorio y móvil contra la versión anterior."
+    ],
+    "label": "TP2 · Componentes",
+    "period": "Cierre y entrega",
+    "gem": "cerulean",
+    "note": "Dificultad"
   }
 ]
