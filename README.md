@@ -10,6 +10,7 @@ AACMP presenta a cinco integrantes que combinan análisis, desarrollo, diseño y
 - [Arquitectura](#arquitectura)
 - [Uso de IA](#uso-de-ia)
 - [Estado de la entrega](#estado-de-la-entrega)
+- [Capturas](#capturas)
 
 ## Enlaces del proyecto
 
@@ -22,7 +23,7 @@ AACMP presenta a cinco integrantes que combinan análisis, desarrollo, diseño y
 | -------------------- | ----------------------------------------------------------- | ----------------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | Juan Manuel Albareda | [juanmanuelalbareda](https://github.com/juanmanuelalbareda) | Análisis y calidad      | Sidebar fija en escritorio, isotipo compartido, árbol y bitácora actualizados; revisión contra la rúbrica y declaración de IA |
 | Mariano Arenas       | [NanoCode10](https://github.com/NanoCode10)                 | Código y lógica         | Navegación y sidebar, búsqueda y filtro de recursos como funciones puras, pruebas automatizadas, contraste de la bitácora    |
-| Daniela Cabrera      | [Dancay5071](https://github.com/Dancay5071)                 | Diseño y detalle        | Estilos de la navegación lateral y responsive; perfiles unificados en un componente reutilizable y desplazamiento a `#equipo` |
+| Daniela Cabrera      | [Dancay5071](https://github.com/Dancay5071)                 | Diseño y detalle        | Estilos de la navegación lateral y responsive; perfiles unificados en un componente reutilizable                             |
 | Pablo Macia          | [pablormacia](https://github.com/pablormacia)               | Estrategia y movimiento | Creación del repositorio, migración del TP1 a React (rutas, páginas, datos, API, árbol y bitácora) y deploy en Vercel        |
 | Fernando Palearuzza  | [FerPalearuzza](https://github.com/FerPalearuzza)           | Contenido y empatía     | Capturas del proyecto y revisión del README                                                                                 |
 
@@ -66,15 +67,15 @@ La API utiliza [GitHub Search Repositories](https://docs.github.com/en/rest/sear
 - `src/components/ThemedImage.jsx`: imágenes que responden al tema y al revelado.
 - `src/components/MemberSheet.jsx` y `ShuffleControl.jsx`: ficha móvil y mezclador por click o arrastre.
 - `src/components/Footer.jsx`: footer original según la página.
-- `src/pages/`: portada, perfiles, recursos, API, árbol y bitácora.
+- `src/pages/`: portada, perfiles, recursos, API, árbol y bitácora. `Profile.jsx` arma los cinco perfiles con un único `ProfileView` a partir de `members.json`.
 - `src/data/`: integrantes, 22 recursos y registros del proceso.
 - `src/lib/`: `github.js` consulta la API y valida su respuesta; `resources.js` resuelve la búsqueda y el filtro de recursos como funciones puras.
 - `public/css/`: los estilos originales del TP1, idénticos a los del sitio de referencia.
 - `src/styles.css`: estilos acotados al panel lateral y a las secciones nuevas del TP2.
 
-Las pantallas se construyen con JSX y estado/hooks de React. El HTML serializado y los scripts del TP1 se conservan como referencia en `src/pages.json` y `public/js/`; la aplicación nueva no los importa ni ejecuta. Las capturas preexistentes en `public/docs/capturas/` corresponden al TP1.
+Las pantallas se construyen con JSX y estado/hooks de React. El HTML serializado y los scripts del TP1 se conservan como referencia en `src/pages.json` y `public/js/`; la aplicación nueva no los importa ni ejecuta. En `public/docs/capturas/` conviven las capturas del TP1 (`.jpg`) con las del TP2 que se muestran en [Capturas](#capturas).
 
-Validación local: compilación de producción; 14 pruebas automatizadas con `node:test`: seis de la API (consulta sin credenciales, límites, respuestas inválidas incluida `null`, resultado vacío y errores) y ocho de los recursos (búsqueda por nombre, mayúsculas y tildes, categoría, combinación, sin resultados, restablecimiento, espacios y catálogo local); revisión en navegador de los cinco perfiles, búsqueda y filtro combinados, bitácora, árbol desplegable, tema y menú móvil a 390 px. La API devolvió nueve repositorios en la consulta real.
+Validación local: compilación de producción; 14 pruebas automatizadas con `node:test`: seis de la API (consulta sin credenciales, límites, respuestas inválidas incluida `null`, resultado vacío y errores) y ocho de los recursos (búsqueda por nombre, mayúsculas y tildes, categoría, combinación, sin resultados, restablecimiento, espacios y catálogo local); revisión en navegador de los cinco perfiles (revelado y tono por habilidad), búsqueda y filtro combinados, bitácora, árbol desplegable, tema y menú móvil a 390 px. La API devolvió nueve repositorios en la consulta real.
 
 ## Uso de IA
 
@@ -98,21 +99,20 @@ Implementadas las funcionalidades de los criterios 4 a 14. La documentación ide
 
 El deploy de Vercel y el repositorio independiente de TP2 están enlazados arriba. Ambos son de acceso público, y los cinco integrantes tienen aceptada la invitación como colaboradores del repositorio.
 
-
 ## Capturas
 
-Se muestran las capturas de los módulos incorporados en esta entrega.
+Módulos incorporados en el TP2.
 
 ### Exploración de la API
 
 ![Sección de exploración de la API de GitHub](./public/docs/capturas/explorar-api.png)
 
-### Menú desplegable: 
+### Sidebar en móvil y en escritorio
 
 ![Menú lateral desplegado en móvil](./public/docs/capturas/men%C3%BA-desplegado-mobile.png)
 
 ![Menú de escritorio en la portada](./public/docs/capturas/menu-index-desktop.png)
 
-### Página de recursos con formulario y links   ,
+### Recursos con búsqueda y filtro
 
 ![Catálogo de recursos con búsqueda y filtros](./public/docs/capturas/recursos.png)
